@@ -8,6 +8,7 @@ public class RoomGenerator : MonoBehaviour
 
     public void generateRoom()
     {
+        int doorOn = 12;
         for(int i = 0; i< 15; i++)
         {
             int rand = Random.Range(0, 100), whichPrefab = 0;
@@ -21,8 +22,18 @@ public class RoomGenerator : MonoBehaviour
             else if (rand > 88 && rand < 92) whichPrefab = 7;
             else if (rand > 92 && rand < 96) whichPrefab = 8;
             else if (rand > 96 && rand < 100) whichPrefab = 9;
-            GameObject gameObject = Instantiate(listOfPrefabs[whichPrefab], new Vector3((i % 5) * 7.5f, (i / 5) * 7.5f), Quaternion.Euler(0, 0, 0));
-            gameObject.transform.parent = transform;
+            if(i == doorOn)
+            {
+                GameObject gameObject = Instantiate(listOfPrefabs[10], new Vector3((i % 5) * 7.5f, (i / 5) * 7.5f), Quaternion.Euler(0, 0, 0));
+                gameObject.transform.parent = transform;
+            }
+            else
+            {
+                GameObject gameObject = Instantiate(listOfPrefabs[whichPrefab], new Vector3((i % 5) * 7.5f, (i / 5) * 7.5f), Quaternion.Euler(0, 0, 0));
+                gameObject.transform.parent = transform;
+            }
+            
+          
         }
     }
     

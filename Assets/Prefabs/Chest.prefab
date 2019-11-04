@@ -146,4 +146,4 @@ MonoBehaviour:
     type: 3}
   closeSprite: {fileID: -6834524911116659543, guid: 3db7c94c9b8aaa24a833e104d140e101,
     type: 3}
-  item: {fileID: 0}
+  item: {fileID: 6514167529090015004, guid: 48b6c637627a7be469310868842fc0ab, type: 3}
