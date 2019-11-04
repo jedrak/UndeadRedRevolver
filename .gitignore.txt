@@ -1,0 +1,12 @@
+Library/
+build/
+Build/
+obj/
+Obj/
+ProjectSettings/
+temp/
+Temp/
+*.sln
+Assembly-CSharp.csproj
+.vs/
+.vscode/
