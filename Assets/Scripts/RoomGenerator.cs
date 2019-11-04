@@ -32,8 +32,9 @@ public class RoomGenerator : MonoBehaviour
                 GameObject gameObject = Instantiate(listOfPrefabs[whichPrefab], new Vector3((i % 5) * 7.5f, (i / 5) * 7.5f), Quaternion.Euler(0, 0, 0));
                 gameObject.transform.parent = transform;
             }
-            
-          
+
+            //update pathfinding grid
+            AstarPath.active.Scan();
         }
     }
     

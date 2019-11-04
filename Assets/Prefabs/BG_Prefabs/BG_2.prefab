@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 5036394952250904950}
   - component: {fileID: 5036394952250904949}
   - component: {fileID: 5036394952250904948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: greenery_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

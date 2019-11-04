@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 6717186346229506237}
   - component: {fileID: 6717186346229506235}
   - component: {fileID: 6717186346229506236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: greenery_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}

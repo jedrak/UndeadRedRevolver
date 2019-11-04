@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 5449780268277116488}
   - component: {fileID: 5449780268277116495}
   - component: {fileID: 5449780268277116489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
