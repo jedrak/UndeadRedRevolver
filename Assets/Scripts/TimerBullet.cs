@@ -8,9 +8,9 @@ public class TimerBullet : MonoBehaviour
        
     }
     private void OnEnable() {
-        Debug.Log("Stworzono kule", this);
+        //Debug.Log("Stworzono kule", this);
     }
     private void OnDestroy() {
-        Debug.Log("Zniszcono kule", this);
+        //Debug.Log("Zniszcono kule", this);
     }
 }

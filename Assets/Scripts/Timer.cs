@@ -8,10 +8,10 @@ public class Timer : MonoBehaviour
     public GameObject bulletPrefab;
     
     private List<GameObject> _listOfBullets;
-    public float _currentTime{
+    /*public float _currentTime{
         get;
         private set;
-    }
+    }*/
     
 
     void Start()
@@ -37,10 +37,10 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        _currentTime += Time.fixedDeltaTime;
-        if(((timeToEnd - _currentTime) / 10.0f)+1 > _listOfBullets.Count){
+        timeToEnd -= Time.fixedDeltaTime;
+        if(((timeToEnd) / 10.0f)+1 > _listOfBullets.Count){
             float trans = 0;
-            while(((timeToEnd - _currentTime) / 10.0f)+1 > _listOfBullets.Count){
+            while(((timeToEnd) / 10.0f)+1 > _listOfBullets.Count){
                 if(_listOfBullets.Count % 6 != 0)
                 {
                     trans = .1f;
@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
                 }
                 
         }
-        if(((timeToEnd - _currentTime) / 10.0f) + 1.0 < _listOfBullets.Count)
+        if(((timeToEnd) / 10.0f) + 1.0 < _listOfBullets.Count)
         {
             //Debug.Log(((timeToEnd - _currentTime) / 10.0f), this);
             if(_listOfBullets.Count - 1 > 0){
@@ -67,6 +67,6 @@ public class Timer : MonoBehaviour
                 _listOfBullets.Remove(_listOfBullets[_listOfBullets.Count - 1]);
             }
         }
-        //Debug.Log(timeToEnd - _currentTime);
+          //Debug.Log(timeToEnd - _currentTime);
     }
 }

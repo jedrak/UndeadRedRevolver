@@ -9,11 +9,13 @@ public class Item : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
+       
     }
     void Update()
     {
-
+        //Debug.Log(spriteRenderer.enabled);
     }
     public void Show()
     {
