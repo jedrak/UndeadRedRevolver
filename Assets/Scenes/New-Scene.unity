@@ -672,6 +672,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1160359968}
+    - target: {fileID: 213525194749089208, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: timerManager
+      value: 
+      objectReference: {fileID: 768219966}
+    - target: {fileID: 213525194749089208, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: spawningSpeed
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 213525194749089208, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 1445899410}
     - target: {fileID: 8136217215809621905, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: m_IsActive
@@ -682,6 +697,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1160359968}
+    - target: {fileID: 8136217215809621907, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: timerManager
+      value: 
+      objectReference: {fileID: 768219966}
+    - target: {fileID: 8136217215809621907, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: spawningSpeed
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136217215809621907, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 1445899410}
     - target: {fileID: 8138310441030425866, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: m_IsActive
@@ -692,6 +722,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1160359968}
+    - target: {fileID: 8138310441030425864, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: timerManager
+      value: 
+      objectReference: {fileID: 768219966}
+    - target: {fileID: 8138310441030425864, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: spawningSpeed
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138310441030425864, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 1445899410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c852fdb127a296f45a01ecb526b68647, type: 3}
 --- !u!4 &1711859940 stripped

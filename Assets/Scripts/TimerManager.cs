@@ -27,7 +27,7 @@ public class TimerManager : MonoBehaviour
                     sp.color = new Color(.7f, .5f, .5f, 1.0f);
                 }
                 timer.timeToEnd = 60;
-                monsterKillcount = 0;
+                
             
             }
             else
@@ -41,6 +41,7 @@ public class TimerManager : MonoBehaviour
                     if(t.gameObject.tag == "Enemy") Destroy(t.gameObject);
                 }
                 timer.timeToEnd = 10 + 2 * monsterKillcount;
+                monsterKillcount = 0;
             }
             foreach(Transform t in room.GetComponentInChildren<Transform>())
             {
