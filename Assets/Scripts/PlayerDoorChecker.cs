@@ -12,7 +12,7 @@ public class PlayerDoorChecker : MonoBehaviour
         {
             foreach(Transform t in generator.GetComponentInChildren<Transform>())
             {
-                Destroy(t.gameObject);
+                if(t.gameObject.tag != "Spawner") Destroy(t.gameObject);     
             }
             transform.Translate(0, -18, 0, generator.transform);
             generator.generateRoom();

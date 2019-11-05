@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2668398451061858712}
   m_Layer: 0
   m_Name: MobSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawningSpeed: 12
-  mobPrefab: {fileID: 1896534647938304020, guid: 474ecaaf953763d4eaa8ade07b77f5bb,
+  mobPrefab: {fileID: 4844488910241337104, guid: 8a4c1860eb93a9543be381633bc39bba,
     type: 3}
-  player: {fileID: 0}
+  player: {fileID: 2649288633629026519, guid: 2e5654956e0dfce4a9325b57f2ce6e4e, type: 3}

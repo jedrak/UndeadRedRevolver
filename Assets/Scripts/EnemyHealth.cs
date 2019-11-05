@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int hp;
+    public TimerManager timerManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Bullet")
@@ -17,9 +18,15 @@ public class EnemyHealth : MonoBehaviour
     public void FixedUpdate()
     {
         if(hp <= 0)
-        {
+        {   
+            if(timerManager._playerIsDead) timerManager.monsterKillcount++;
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 }
 

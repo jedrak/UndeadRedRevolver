@@ -56,7 +56,7 @@ public class Timer : MonoBehaviour
                     Quaternion.Euler(0, 0, 90));
                 bullet.transform.parent = transform;
                 _listOfBullets.Add(bullet);
-                }
+            }
                 
         }
         if(((timeToEnd) / 10.0f) + 1.0 < _listOfBullets.Count)
