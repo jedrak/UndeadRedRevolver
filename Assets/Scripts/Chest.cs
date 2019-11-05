@@ -33,7 +33,7 @@ public class Chest : MonoBehaviour
             // play animation / change sprite
             spriteRenderer.sprite = openSprite;
             // show item
-            item.Show();
+            if (item != null) item.Show();
             // set state
             isOpen = true;
         }
