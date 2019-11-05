@@ -1,4 +1,8 @@
 UndeadRedRevolver.sln
+Library/
+obj/
+Temp/
+*.csproj
 .vs/UndeadRedRevolver/v16/.suo
 .vs/UndeadRedRevolver/v16/Server/sqlite3/db.lock
 .vs/UndeadRedRevolver/v16/Server/sqlite3/storage.ide
