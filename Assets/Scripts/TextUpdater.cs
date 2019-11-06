@@ -11,6 +11,6 @@ public class TextUpdater : MonoBehaviour
     void Update()
     {
         //gameObject.SetActive(timerManager._playerIsDead);
-        GetComponent<TextMeshProUGUI>().text = "" + timerManager.monsterKillcount;
+        GetComponent<TextMeshProUGUI>().text = "Killcount: " + timerManager.monsterKillcount;
     }
 }

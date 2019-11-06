@@ -8,6 +8,7 @@ public class TimerManager : MonoBehaviour
     public RoomGenerator room;
     public bool _playerIsDead {get; private set;}
     public int monsterKillcount {get; set;}
+    public int score { get; set;}
 
 
     private void Start()
@@ -15,7 +16,9 @@ public class TimerManager : MonoBehaviour
         Screen.fullScreen = false;
         _playerIsDead = false;
         monsterKillcount = 0;
+        score = 0;
     }
+
     void FixedUpdate()
     {
         if(timer.timeToEnd < 0)
@@ -28,7 +31,7 @@ public class TimerManager : MonoBehaviour
                     sp.color = new Color(.7f, .5f, .5f, 1.0f);
                 }
                 timer.timeToEnd = 60;
-                
+                score = 0;
             
             }
             else
@@ -43,6 +46,7 @@ public class TimerManager : MonoBehaviour
                 }
                 timer.timeToEnd = 10 + 2 * monsterKillcount;
                 monsterKillcount = 0;
+                
             }
             foreach(Transform t in room.GetComponentInChildren<Transform>())
             {

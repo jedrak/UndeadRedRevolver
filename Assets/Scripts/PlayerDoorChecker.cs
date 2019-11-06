@@ -34,7 +34,7 @@ public class PlayerDoorChecker : MonoBehaviour
             }
             transform.Translate(0, -18, 0, generator.transform);
             generator.generateRoom();
-            
+            manager.score++;
         }
     }
 }

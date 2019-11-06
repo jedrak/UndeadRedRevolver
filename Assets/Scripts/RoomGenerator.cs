@@ -49,7 +49,7 @@ public class RoomGenerator : MonoBehaviour
                                               Quaternion.Euler(0, 0, 0),
                                               transform) as GameObject;
                 mob.GetComponent<AIDestinationSetter>().target = player;
-            mob.GetComponent<EnemyHealth>().timerManager = _timerManager;
+                mob.GetComponent<EnemyHealth>().timerManager = _timerManager;
             }
     }
     
