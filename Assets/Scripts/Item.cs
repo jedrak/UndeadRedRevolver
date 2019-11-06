@@ -41,7 +41,10 @@ public class Item : MonoBehaviour
             //spriteRenderer.enabled = false;
             // użytkownik musi go dostać w ekwipunku czy coś
             if (other.gameObject.GetComponent<PlayerInventory>().addItem(this))
+            {
+                other.gameObject.GetComponent<playerMovement>().weapon = itemName;
                 Destroy(gameObject);
+            }
         }
     }
 }
