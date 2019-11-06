@@ -408,6 +408,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 2011148207}
+--- !u!114 &1160359975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160359968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e091362a51b6f8648b992e720f08e72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323612905
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +622,12 @@ PrefabInstance:
     - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: listOfMobs.Array.size
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.size
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
@@ -621,7 +638,7 @@ PrefabInstance:
         type: 3}
       propertyPath: listOfMobs.Array.data[0]
       value: 
-      objectReference: {fileID: 3602346927366139118, guid: 36a6a8d2ed5b4e64c98de474092fcf72,
+      objectReference: {fileID: 1125799933892374666, guid: 41cc22b4075f13147b2f8600167c9fdc,
         type: 3}
     - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
@@ -634,6 +651,72 @@ PrefabInstance:
       propertyPath: listOfMobs.Array.data[2]
       value: 
       objectReference: {fileID: 1125799933892374666, guid: 41cc22b4075f13147b2f8600167c9fdc,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 1545772166440228017, guid: 05a603c5a168e58428a70b809aba0620,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 5036394951812546251, guid: edf20858f6ec29648ad6f0abf556fe44,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 933495470072754363, guid: e55cde441301f0d478b7713ae82e79b1,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 5449780269338705963, guid: d91cbe1532a566f439fd8d18a40e4f6e,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 6153047103229244677, guid: 03944548ae3fbaa4d931f0a584114495,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 5900213693415134860, guid: 6d74de6ea129bbf4f8f327de4687fe02,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 548867747079091266, guid: adbf99fde7573654a8b35699cf04d57e,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 6717186347261063295, guid: aabb792edebe5a740a97914449e553bc,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 5641696334816435212, guid: 837b65f5383fad147bfb08f4d76de341,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[9]
+      value: 
+      objectReference: {fileID: 3357298326662574174, guid: 4c6749112d1f2274791324d01587c285,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfTiles.Array.data[10]
+      value: 
+      objectReference: {fileID: 2318502688283298906, guid: 0426e5abae74c344d96551373c398db4,
         type: 3}
     - target: {fileID: 2233064630658534382, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}

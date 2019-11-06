@@ -11,13 +11,15 @@ public class Chest : MonoBehaviour
     [SerializeField]
     private Sprite openSprite, closeSprite;
     [SerializeField]
-    private Item item;
+    private Item itemPrefab;
+    private GameObject itemGO;
 
     // Start is called before the first frame update
     void Start()
     {
         isOpen = false;
         spriteRenderer.sprite = closeSprite;
+        //Instantiate(itemPrefab, transform.position, transform.rotation, transform);
     }
 
     // Update is called once per frame
@@ -33,7 +35,8 @@ public class Chest : MonoBehaviour
             // play animation / change sprite
             spriteRenderer.sprite = openSprite;
             // show item
-            if (item != null) item.Show();
+            //itemGO.GetComponent<Item>().Show();
+            Instantiate(itemPrefab, transform.position, transform.rotation, transform);
             // set state
             isOpen = true;
         }

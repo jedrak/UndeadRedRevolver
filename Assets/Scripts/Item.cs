@@ -10,8 +10,8 @@ public class Item : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = false;
-       
+        //spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
     }
     void Update()
     {
@@ -19,16 +19,18 @@ public class Item : MonoBehaviour
     }
     public void Show()
     {
-        spriteRenderer.enabled = true;
+        //spriteRenderer.enabled = true;
+        //spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            spriteRenderer.enabled = false;
+            Destroy(gameObject);    
+            //spriteRenderer.enabled = false;
             // użytkownik musi go dostać w ekwipunku czy coś
-            // other.gameObject.GetComponent("Player").addItem(itemName);
+            other.gameObject.GetComponent<PlayerInventory>().addItem(this);
             // ..
         }
     }
