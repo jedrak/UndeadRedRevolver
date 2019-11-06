@@ -9,6 +9,8 @@ public class TimerManager : MonoBehaviour
     public bool _playerIsDead {get; private set;}
     public int monsterKillcount {get; set;}
     public int score { get; set;}
+    public GameObject killCountText;
+    public GameObject scoreText;
 
 
     private void Start()
@@ -21,8 +23,11 @@ public class TimerManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        killCountText.SetActive(_playerIsDead);
+        scoreText.SetActive(!_playerIsDead);
         if(timer.timeToEnd < 0)
         {
+            
             _playerIsDead = !_playerIsDead;
             if (_playerIsDead)
             {
@@ -50,8 +55,12 @@ public class TimerManager : MonoBehaviour
             }
             foreach(Transform t in room.GetComponentInChildren<Transform>())
             {
-                Debug.Log(t.gameObject, this);
+                //Debug.Log(t.gameObject, this);
                 if(t.gameObject.tag == "Spawner")
+                {
+                    t.gameObject.SetActive(_playerIsDead);
+                }
+                if(t.gameObject.tag == "UI")
                 {
                     t.gameObject.SetActive(_playerIsDead);
                 }
