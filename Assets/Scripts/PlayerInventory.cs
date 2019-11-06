@@ -9,9 +9,24 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory = new List<Item>();
     }
-    public void addItem(Item item)
+    public bool addItem(Item item)
     {
-        if(!inventory.Contains(item)) inventory.Add(item);
-        Debug.Log(inventory.Count);
-    } 
+        // if (!inventory.Contains(item)) inventory.Add(item);
+        bool found = false;
+        foreach (var it in inventory)
+        {
+            if (it.itemName == item.itemName)
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            inventory.Add(item);
+            return true;
+        }
+        return false;
+        // Debug.Log(inventory.Count);
+    }
 }

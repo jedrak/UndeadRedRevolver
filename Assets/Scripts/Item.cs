@@ -3,7 +3,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private string itemName;
+    public string itemName;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
@@ -11,7 +11,18 @@ public class Item : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         //spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        /* itemName = "Revolver";
+        Sprite sprite = Resources.Load("Weapons/revolver") as Sprite; */
+        itemName = "Obrzyn";
 
+        /* byte[] bytes = UnityEngine.Windows.File.ReadAllBytes("Assets/Resources/Weapons/obrzyn.png");
+        Texture2D imgTexture = new Texture2D(256, 164);
+        imgTexture.filterMode = FilterMode.Point;
+        imgTexture.LoadImage(bytes);
+        Sprite sprite = Sprite.Create(imgTexture, new Rect(0, 0, 256, 164), new Vector2(0f, 0f), 1.0f);
+        Debug.Log(sprite); */
+
+        // spriteRenderer.sprite = sprite;
     }
     void Update()
     {
@@ -27,11 +38,10 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(gameObject);    
             //spriteRenderer.enabled = false;
             // użytkownik musi go dostać w ekwipunku czy coś
-            other.gameObject.GetComponent<PlayerInventory>().addItem(this);
-            // ..
+            if (other.gameObject.GetComponent<PlayerInventory>().addItem(this))
+                Destroy(gameObject);
         }
     }
 }
