@@ -6,6 +6,13 @@ public class EnemyHealth : MonoBehaviour
 {
     public int hp;
     public TimerManager timerManager;
+
+    private int maxHealth;
+
+    private void Start()
+    {
+        maxHealth = hp;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Bullet")
@@ -19,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(hp <= 0)
         {   
-            if(timerManager._playerIsDead) timerManager.monsterKillcount++;
+            if(timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
             Destroy(gameObject);
         }
     }

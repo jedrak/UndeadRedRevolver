@@ -1,39 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
-public class playerMovement : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
 
-    public Vector2 playerInput;
-    Rigidbody2D rb;
-
-    public float moveSpeed;
 
     public GameObject bulletPrefab;
     public float bulletSpeed;
-    private float lastFire;
-    public float FireDelay;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    public float cooldown;
 
-    // Update is called once per frame
+    private AIPath path;
+    private float _lastTime;
+
+    private void Start()
+    {
+        path = GetComponent<AIPath>();
+    }
     void FixedUpdate()
     {
-        
-           playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        rb.velocity = playerInput.normalized * moveSpeed;
-        float shootHor = Input.GetAxisRaw("Horizontalshoot");
-        float shootVert = Input.GetAxisRaw("Verticalshoot");
-        if((shootHor!=0||shootVert!=0) && Time.time>lastFire +FireDelay)
+        if (path.reachedEndOfPath || path.remainingDistance < 1)
         {
-            Shoot(shootHor, shootVert);
-            lastFire = Time.time;
+            if (Time.time > _lastTime + cooldown)
+            {
+                float x = path.target.position.x - transform.position.x;
+                float y = path.target.position.y - transform.position.y;
+                Vector3 v = new Vector3(x, y);
+                //v = v.normalized;
+                Shoot(v.x, v.y);
+                _lastTime = Time.time;
+            }
         }
     }
+
+
     void Shoot(float x, float y)
     {
         float shotAngle = Vector3.Angle(new Vector3(x, y), Vector3.right);
@@ -46,11 +47,13 @@ public class playerMovement : MonoBehaviour
         {
             bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, shotAngle)) as GameObject;
         }
-         
+
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector3(
             (x < 0) ? Mathf.Floor(x) * bulletSpeed : Mathf.Ceil(x) * bulletSpeed,
               (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed);
 
     }
+
+
 }

@@ -12,6 +12,7 @@ public class TimerManager : MonoBehaviour
 
     private void Start()
     {
+        Screen.fullScreen = false;
         _playerIsDead = false;
         monsterKillcount = 0;
     }

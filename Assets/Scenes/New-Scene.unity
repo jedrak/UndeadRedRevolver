@@ -305,7 +305,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.76862746, g: 0.5686275, b: 0.2784314, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -607,6 +607,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfMobs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1103204956}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfMobs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3602346927366139118, guid: 36a6a8d2ed5b4e64c98de474092fcf72,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfMobs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4844488910241337104, guid: 8a4c1860eb93a9543be381633bc39bba,
+        type: 3}
+    - target: {fileID: 2233064630658534369, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: listOfMobs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1125799933892374666, guid: 41cc22b4075f13147b2f8600167c9fdc,
+        type: 3}
     - target: {fileID: 2233064630658534382, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -687,6 +715,12 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 1445899410}
+    - target: {fileID: 213525194749089208, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 3602346927366139118, guid: 36a6a8d2ed5b4e64c98de474092fcf72,
+        type: 3}
     - target: {fileID: 8136217215809621905, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: m_IsActive
@@ -712,6 +746,12 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 1445899410}
+    - target: {fileID: 8136217215809621907, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 3602346927366139118, guid: 36a6a8d2ed5b4e64c98de474092fcf72,
+        type: 3}
     - target: {fileID: 8138310441030425866, guid: c852fdb127a296f45a01ecb526b68647,
         type: 3}
       propertyPath: m_IsActive
@@ -737,6 +777,12 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 1445899410}
+    - target: {fileID: 8138310441030425864, guid: c852fdb127a296f45a01ecb526b68647,
+        type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 3602346927366139118, guid: 36a6a8d2ed5b4e64c98de474092fcf72,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c852fdb127a296f45a01ecb526b68647, type: 3}
 --- !u!4 &1711859940 stripped
@@ -944,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 3245791145324786536, guid: 641d8bedbe7e21c40aef9ef5ab8c8e6b,
         type: 3}
       propertyPath: timeToEnd
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3245791145324786551, guid: 641d8bedbe7e21c40aef9ef5ab8c8e6b,
         type: 3}
@@ -954,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: 3245791145324786551, guid: 641d8bedbe7e21c40aef9ef5ab8c8e6b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3245791145324786551, guid: 641d8bedbe7e21c40aef9ef5ab8c8e6b,
         type: 3}

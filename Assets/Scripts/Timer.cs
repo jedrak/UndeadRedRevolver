@@ -22,11 +22,11 @@ public class Timer : MonoBehaviour
         {
             if(i % 6 != 0)
             {
-                trans += .1f;
+                trans += .3f;
             }  
             else
             {
-                trans += .2f;
+                trans += .6f;
             }
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(transform.position.x + trans, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 90));
             bullet.transform.parent = transform;
@@ -43,11 +43,11 @@ public class Timer : MonoBehaviour
             while(((timeToEnd) / 10.0f)+1 > _listOfBullets.Count){
                 if(_listOfBullets.Count % 6 != 0)
                 {
-                    trans = .1f;
+                    trans = .3f;
                 }
                 else
                 {
-                    trans = .2f;
+                    trans = .6f;
                 }
                 GameObject bullet = Instantiate(bulletPrefab,
                 new Vector3(_listOfBullets[_listOfBullets.Count-1].transform.position.x + trans,
