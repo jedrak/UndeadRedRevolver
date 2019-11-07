@@ -13,7 +13,7 @@ public class TimerManager : MonoBehaviour
     public GameObject killCountText;
     public GameObject scoreText;
     public GameObject messageText;
-
+    public GameObject gameplayInfoText;
 
     private void Start()
     {
@@ -21,10 +21,13 @@ public class TimerManager : MonoBehaviour
         _playerIsDead = false;
         monsterKillcount = 0;
         score = 0;
+        gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "Move with WSAD, shoot with Arrows Keys";
     }
 
     void FixedUpdate()
     {
+        if (Time.time > 10) gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "";
+
         killCountText.SetActive(_playerIsDead);
         scoreText.SetActive(!_playerIsDead);
         if (_playerIsDead)
@@ -33,7 +36,7 @@ public class TimerManager : MonoBehaviour
         }
         else
         {
-            messageText.GetComponent<TextMeshProUGUI>().text = "You are alive.\nCollect items and explore rooms!";
+            messageText.GetComponent<TextMeshProUGUI>().text = "You are alive.\nCollect items in chests and explore rooms!";
         }
         if (timer.timeToEnd < 0)
         {
