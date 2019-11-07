@@ -36,15 +36,12 @@ public class playerMovement : MonoBehaviour
         if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + FireDelay + ReloadDelay)
         {
             ReloadDelay = 0;
-            if (magazinesize > 0)
-            {
-                Shoot(shootHor, shootVert);
-                magazinesize--;
+            
+            Shoot(shootHor, shootVert);
+            magazinesize--;
 
-            }
-            else
+            if (magazinesize == 0)
             {
-
                 FindObjectOfType<AudioManager>().Play("reload");
                 magazinesize = 6;
                 ReloadDelay = 0.5f;
