@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 2
   timerManager: {fileID: 0}
+  blood: {fileID: 0}
 --- !u!114 &1125799933892374670
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,8 +25,9 @@ public class EnemyHealth : MonoBehaviour
     public void FixedUpdate()
     {
         if(hp <= 0)
-        {   
-            if(timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
+        {
+            FindObjectOfType<AudioManager>().Play("death");
+            if (timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
             Destroy(gameObject);
         }
     }

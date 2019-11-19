@@ -26,9 +26,16 @@ public class playerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D))
+        {
+            FindObjectOfType<AudioManager>().Play("shotgun");
+        }
+    }
     void FixedUpdate()
     {
-
+       
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.velocity = playerInput.normalized * moveSpeed;
         float shootHor = Input.GetAxisRaw("Horizontalshoot");
@@ -89,14 +96,14 @@ public class playerMovement : MonoBehaviour
             }
             bullets[0].AddComponent<Rigidbody2D>().gravityScale = 0;
             bullets[0].GetComponent<Rigidbody2D>().velocity = new Vector3(dx, dy);
-            FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+            FindObjectOfType<AudioManager>().Play("shotgun" );
 
             //środek
             bullets[1].AddComponent<Rigidbody2D>().gravityScale = 0;
             bullets[1].GetComponent<Rigidbody2D>().velocity = new Vector3(
                 (x < 0) ? Mathf.Floor(x) * bulletSpeed : Mathf.Ceil(x) * bulletSpeed,
                 (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed);
-            FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+            FindObjectOfType<AudioManager>().Play("shotgun" );
 
             // prawy
             dx = 0;
@@ -123,7 +130,7 @@ public class playerMovement : MonoBehaviour
             }
             bullets[2].AddComponent<Rigidbody2D>().gravityScale = 0;
             bullets[2].GetComponent<Rigidbody2D>().velocity = new Vector3(dx, dy);
-            FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+            FindObjectOfType<AudioManager>().Play("shotgun" );
         }
         else // default == "Revolver"
         {
