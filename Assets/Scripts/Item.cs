@@ -43,6 +43,7 @@ public class Item : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerInventory>().addItem(this))
             {
                 other.gameObject.GetComponent<playerMovement>().weapon = itemName;
+                other.gameObject.GetComponent<Shooting>().weapon = itemName;
                 Destroy(gameObject);
             }
         }

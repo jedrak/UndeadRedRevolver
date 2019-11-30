@@ -13,29 +13,43 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed;
 
     public GameObject bulletPrefab;
-    public float bulletSpeed;
+
     public int magazinesize = 6;
     private float lastFire;
     public float FireDelay;
     public string weapon = "Revolver";
     public float ReloadDelay = 0;
+    // Handle camera shaking
+    public float camShakeAmt = 0.05f;
+    public float camShakeLength = 0.1f;
+    CameraShake camShake;
+    public Camera cam;
+    public float bulletSpeed = 60.0f;
+    Vector2 mousePos;
+    List<GameObject> bullets = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
+        camShake =GetComponent<CameraShake>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D))
-        {
-            FindObjectOfType<AudioManager>().Play("shotgun");
-        }
+       
     }
     void FixedUpdate()
     {
        
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 LookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(LookDir.y,LookDir.x)*Mathf.Rad2Deg-90f;
+        rb.rotation = angle ;
+
+
+
+
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.velocity = playerInput.normalized * moveSpeed;
         float shootHor = Input.GetAxisRaw("Horizontalshoot");
@@ -43,7 +57,7 @@ public class playerMovement : MonoBehaviour
         if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + FireDelay + ReloadDelay)
         {
             ReloadDelay = 0;
-            
+
             Shoot(shootHor, shootVert);
             magazinesize--;
 
@@ -61,6 +75,8 @@ public class playerMovement : MonoBehaviour
         int rand = Random.Range(1, 7);
         float shotAngle = Vector3.Angle(new Vector3(x, y), Vector3.right);
 
+        //Shake the camera
+        camShake.Shake(camShakeAmt, camShakeLength);
         if (weapon.Equals("Obrzyn"))
         {
             List<GameObject> bullets = new List<GameObject>();
@@ -150,4 +166,5 @@ public class playerMovement : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("gunshot" + rand);
         }
     }
+  
 }

@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int hp;
     public TimerManager timerManager;
-
+    public GameObject effect;
     private int maxHealth;
 
     private void Start()
@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet")
         {
+            GameObject eff = Instantiate(effect, transform.position, Quaternion.identity);
+            Destroy(eff, 0.5f);
             hp--;
             Destroy(collision.gameObject);
         }

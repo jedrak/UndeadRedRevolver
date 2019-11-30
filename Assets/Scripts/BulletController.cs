@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float lifeTime;
+    public float lifeTime = 2;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +22,5 @@ public class BulletController : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
+
 }
