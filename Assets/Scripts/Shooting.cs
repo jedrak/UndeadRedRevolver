@@ -28,7 +28,13 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && Time.time > lastFire + FireDelay + ReloadDelay)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            magazinesize = 6;
+            FindObjectOfType<AudioManager>().Play("reload");
+            Debug.Log("space key was pressed");
+        }
+        if (Input.GetButtonDown("Fire1") && Time.time > lastFire + FireDelay + ReloadDelay)
             {
             ReloadDelay = 0;
 
