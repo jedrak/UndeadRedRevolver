@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   timerManager: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
 --- !u!114 &3602346927366139114
 MonoBehaviour:
   m_ObjectHideFlags: 0

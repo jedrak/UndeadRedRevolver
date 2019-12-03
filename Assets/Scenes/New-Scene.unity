@@ -1569,6 +1569,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1965129918433819947, guid: 2e0fc81b25b0b73468ffb42c4451b381,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 277966887896183345, guid: 0d18b3784eb79cb48a059287a3d75acf,
+        type: 3}
     - target: {fileID: 1965129917498507263, guid: 2e0fc81b25b0b73468ffb42c4451b381,
         type: 3}
       propertyPath: playerTransform
@@ -1709,11 +1715,6 @@ PrefabInstance:
       propertyPath: m_DrawMode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2649288633629026515, guid: 2e5654956e0dfce4a9325b57f2ce6e4e,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2649288633629026514, guid: 2e5654956e0dfce4a9325b57f2ce6e4e,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -1764,6 +1765,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1067412857}
+    - target: {fileID: 2649288633629026515, guid: 2e5654956e0dfce4a9325b57f2ce6e4e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e5654956e0dfce4a9325b57f2ce6e4e, type: 3}
 --- !u!1001 &5346908296611809148

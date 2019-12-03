@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
             {
                 trans += .6f;
             }
-            GameObject bullet = Instantiate(bulletPrefab, new Vector3(transform.position.x + trans, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 90));
+            GameObject bullet = Instantiate(bulletPrefab, new Vector3(transform.position.x + trans, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
             bullet.transform.parent = transform;
             _listOfBullets.Add(bullet);
         }
@@ -53,7 +53,7 @@ public class Timer : MonoBehaviour
                 new Vector3(_listOfBullets[_listOfBullets.Count-1].transform.position.x + trans,
                     _listOfBullets[_listOfBullets.Count-1].transform.position.y,
                     _listOfBullets[_listOfBullets.Count-1].transform.position.z),
-                    Quaternion.Euler(0, 0, 90));
+                    Quaternion.Euler(0, 0, 0));
                 bullet.transform.parent = transform;
                 _listOfBullets.Add(bullet);
             }
