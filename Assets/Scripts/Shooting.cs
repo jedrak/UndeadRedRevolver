@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     public float ReloadDelay = 0;
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public float bulletforce = 10f;
+    public float bulletforce = 1f;
     // Handle camera shaking
     public float camShakeAmt = 0.05f;
     public float camShakeLength = 0.1f;
@@ -28,11 +28,26 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+         if (Input.GetKeyDown(KeyCode.R))
         {
             magazinesize = 6;
             FindObjectOfType<AudioManager>().Play("reload");
-            Debug.Log("space key was pressed");
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (weapon == "Obrzyn")
+            {
+             weapon = "Revolver";
+             } 
+            else
+            {
+                weapon = "Obrzyn";
+            }
+
+
+
+
         }
         if (Input.GetButtonDown("Fire1") && Time.time > lastFire + FireDelay + ReloadDelay)
             {
@@ -57,6 +72,7 @@ public class Shooting : MonoBehaviour
         List<GameObject> bullets = new List<GameObject>();
         if (weapon.Equals("Obrzyn"))
         {
+            camShake.Shake(camShakeAmt, camShakeLength);
             bullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation));
             bullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation));
             bullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation ));
@@ -64,7 +80,8 @@ public class Shooting : MonoBehaviour
             {
                 Vector3 dis= firePoint.up;
                 dis.x += -0.1f + 0.1f*i;
-                dis.y += -0.1f + 0.1f * i;
+                dis.y += 0.2f - 0.2f * i;
+            
                 bullets[i].AddComponent<Rigidbody2D>().gravityScale = 0;
                 bullets[i].GetComponent<Rigidbody2D>().AddForce(dis * bulletforce, ForceMode2D.Impulse);
                 FindObjectOfType<AudioManager>().Play("shotgun");

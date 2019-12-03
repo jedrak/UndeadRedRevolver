@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
             // użytkownik musi go dostać w ekwipunku czy coś
             if (other.gameObject.GetComponent<PlayerInventory>().addItem(this))
             {
-                other.gameObject.GetComponent<playerMovement>().weapon = itemName;
+                
                 other.gameObject.GetComponent<Shooting>().weapon = itemName;
                 Destroy(gameObject);
             }
