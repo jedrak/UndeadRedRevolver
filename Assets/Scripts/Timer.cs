@@ -6,8 +6,10 @@ public class Timer : MonoBehaviour
 {
     public float timeToEnd;
     public GameObject bulletPrefab;
+    public List<Sprite> sprites;
     
     private List<GameObject> _listOfBullets;
+
     /*public float _currentTime{
         get;
         private set;
@@ -18,16 +20,11 @@ public class Timer : MonoBehaviour
     {
         float trans = 0;
         _listOfBullets = new List<GameObject>();
-        for(int i = 0; i < timeToEnd/10.0f; i++)
+        for(int i = 0; i < timeToEnd/60.0f; i++)
         {
-            if(i % 6 != 0)
-            {
-                trans += .3f;
-            }  
-            else
-            {
-                trans += .6f;
-            }
+
+            trans += .8f; 
+
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(transform.position.x + trans, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
             bullet.transform.parent = transform;
             _listOfBullets.Add(bullet);
@@ -38,9 +35,9 @@ public class Timer : MonoBehaviour
     void FixedUpdate()
     {
         timeToEnd -= Time.fixedDeltaTime;
-        if(((timeToEnd) / 10.0f)+1 > _listOfBullets.Count){
+        if(((timeToEnd) / 60.0f)+1 > _listOfBullets.Count){
             float trans = 0;
-            while(((timeToEnd) / 10.0f)+1 > _listOfBullets.Count){
+            while(((timeToEnd) / 60.0f)+1 > _listOfBullets.Count){
                 if(_listOfBullets.Count % 6 != 0)
                 {
                     trans = .3f;
@@ -59,7 +56,7 @@ public class Timer : MonoBehaviour
             }
                 
         }
-        if(((timeToEnd) / 10.0f) + 1.0 < _listOfBullets.Count)
+        if(((timeToEnd) / 60.0f) + 1.0 < _listOfBullets.Count)
         {
             //Debug.Log(((timeToEnd - _currentTime) / 10.0f), this);
             if(_listOfBullets.Count - 1 > 0){
@@ -67,6 +64,8 @@ public class Timer : MonoBehaviour
                 _listOfBullets.Remove(_listOfBullets[_listOfBullets.Count - 1]);
             }
         }
-          //Debug.Log(timeToEnd - _currentTime);
+
+         _listOfBullets[_listOfBullets.Count - 1].GetComponent<SpriteRenderer>().sprite = sprites[(int)(timeToEnd - ((_listOfBullets.Count - 1) * 60))/10];
+
     }
 }
