@@ -58,13 +58,14 @@ public class TimerManager : MonoBehaviour
                 {
                     sp.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 }
-                foreach (Transform t in room.GetComponentInChildren<Transform>())
-                {
-                    if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);
-                }
+               
                 timer.timeToEnd = 10 + 2 * monsterKillcount;
                 monsterKillcount = 0;
 
+            }
+            foreach (Transform t in room.GetComponentInChildren<Transform>())
+            {
+                if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);
             }
             foreach (Transform t in room.GetComponentInChildren<Transform>())
             {
