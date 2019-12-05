@@ -82,7 +82,7 @@ public class Shooting : MonoBehaviour
                 dis.x += -0.1f + 0.1f*i;
                 dis.y += 0.2f - 0.2f * i;
             
-                bullets[i].AddComponent<Rigidbody2D>().gravityScale = 0;
+                //bullets[i].AddComponent<Rigidbody2D>().gravityScale = 0;
                 bullets[i].GetComponent<Rigidbody2D>().AddForce(dis * bulletforce, ForceMode2D.Impulse);
                 FindObjectOfType<AudioManager>().Play("shotgun");
             }
@@ -95,7 +95,7 @@ public class Shooting : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             camShake.Shake(camShakeAmt, camShakeLength);
 
-            bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+           //bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletforce, ForceMode2D.Impulse);
             FindObjectOfType<AudioManager>().Play("gunshot" + rand);
         }
