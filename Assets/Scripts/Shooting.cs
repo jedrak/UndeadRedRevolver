@@ -78,10 +78,11 @@ public class Shooting : MonoBehaviour
             bullets.Add(Instantiate(bulletPrefab, firePoint.position, firePoint.rotation ));
             for (int i = 0; i < bullets.Count; i++)
             {
-                Vector3 dis= firePoint.up;
-                dis.x += -0.1f + 0.1f*i;
-                dis.y += 0.2f - 0.2f * i;
-            
+                Vector3 dis = firePoint.up;
+                dis.x += -0.1f + 0.1f * i;
+                
+                if(i!=1) dis.y += -0.1f;
+
                 //bullets[i].AddComponent<Rigidbody2D>().gravityScale = 0;
                 bullets[i].GetComponent<Rigidbody2D>().AddForce(dis * bulletforce, ForceMode2D.Impulse);
                 FindObjectOfType<AudioManager>().Play("shotgun");
