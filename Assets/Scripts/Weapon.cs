@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Weapon //: MonoBehaviour
 {
-    private int magazinesize;
-    private float lastFire;
-    public float FireDelay;
-    public string weapon ;
-    public float ReloadDelay;
+    public string name;
+    protected int magazinesize;
+    protected float lastFire;
+    protected float FireDelay;
+    protected float ReloadDelay;
+    public GameObject bulletPrefab;
     public float camShakeAmt = 0.05f;
     public float camShakeLength = 0.1f;
     public int Magazinesize { get => magazinesize; set => magazinesize = value; }
     public abstract void Shoot(CameraShake camShake, Transform firePoint);
-    // Start is called before the first frame update
-    void Start()
+    public abstract void Reload();
+    public void setBulletType(GameObject bulletPrefab)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.bulletPrefab = bulletPrefab;
     }
 }

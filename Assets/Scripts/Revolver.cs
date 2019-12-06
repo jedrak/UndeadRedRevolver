@@ -4,36 +4,42 @@ using UnityEngine;
 
 public class Revolver : Weapon
 {
-
-    private int magazinesize;
-    private float lastFire;
-    public float FireDelay;
-    public string weapon;
-    public float ReloadDelay;
-    public GameObject bulletPrefab;
-   
-    public float bulletforce = 1f;
-    public override void Shoot(CameraShake camShake,Transform firePoint)
+    public Revolver()
     {
-        int rand = Random.Range(1, 7);
+        name = "Revolver";
+        magazinesize = 6;
+        lastFire = 0;
+        FireDelay = 0;
+        ReloadDelay = 0;
+    }
+    public float bulletforce = 10.0f;
+    public override void Shoot(CameraShake camShake, Transform firePoint)
+    {
+        if (Time.time > lastFire + FireDelay + ReloadDelay)
+        {
+            ReloadDelay = 0;
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        camShake.Shake(camShakeAmt, camShakeLength);
+            int rand = Random.Range(1, 7);
 
-        //bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletforce, ForceMode2D.Impulse);
-        FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+            GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            camShake.Shake(camShakeAmt, camShakeLength);
+
+            //bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletforce, ForceMode2D.Impulse);
+            Object.FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+
+            magazinesize--;
+
+            if (magazinesize == 0) Reload();
+
+            lastFire = Time.time;
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Reload()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Object.FindObjectOfType<AudioManager>().Play("reload");
+        magazinesize = 6;
+        ReloadDelay = 0.5f;
     }
 }
