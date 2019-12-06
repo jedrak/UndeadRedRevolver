@@ -680,6 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf5e546b855e3243af1f61669d2a5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 768219966}
   timer: {fileID: 2011148207}
 --- !u!114 &1160359975
 MonoBehaviour:
@@ -737,16 +738,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924d47d7eeee2f748afb61b27cad448f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magazinesize: 6
-  FireDelay: 0
-  weapon: Revolver
-  ReloadDelay: 0
   firePoint: {fileID: 563690206}
-  bulletPrefab: {fileID: 1995883844168725068, guid: acf546cf36c127f478af1536d3bc46b1,
+  bulletDefaultPrefab: {fileID: 1995883844168725068, guid: acf546cf36c127f478af1536d3bc46b1,
     type: 3}
-  bulletforce: 20
-  camShakeAmt: 0.05
-  camShakeLength: 0.1
+  bulletBouncyPrefab: {fileID: 8701248695161175749, guid: 17b8c576b3ff91040a25119d9ea4f7ed,
+    type: 3}
+  bulletPenetratingPrefab: {fileID: 6904779747001030485, guid: 6ea069984985616438d9e3f4365c4955,
+    type: 3}
 --- !u!1 &1323612905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1631,11 @@ PrefabInstance:
       propertyPath: timeToEnd
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 1965129918433819947, guid: 2e0fc81b25b0b73468ffb42c4451b381,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 768219966}
     - target: {fileID: 1965129917498507263, guid: 2e0fc81b25b0b73468ffb42c4451b381,
         type: 3}
       propertyPath: playerTransform
