@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public TimerManager manager;
     public Timer timer;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            timer.timeToEnd -= 10;
+            if (manager._playerIsDead)
+            {
+                manager._playerIsDead = false;
+                manager._playerStateChanged = true;
+            }
+            else
+            {
+                timer.timeToEnd -= 10;
+            }
+            
             Destroy(collision.gameObject);
         }
 
@@ -19,8 +29,20 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            timer.timeToEnd -= 10;
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "Enemy")
+            {
+                if (manager._playerIsDead)
+                {
+                    manager._playerIsDead = false;
+                    manager._playerStateChanged = true;
+                }
+                else
+                {
+                    timer.timeToEnd -= 10;
+                }
+
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

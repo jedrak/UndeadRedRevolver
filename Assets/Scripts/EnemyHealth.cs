@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
         anim.SetBool("Front_Death", false);
 
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -34,13 +35,15 @@ public class EnemyHealth : MonoBehaviour
     {
         if (hp <= 0)
         {
+            Debug.Log(hp);
             deathtimer = Time.time;
             FindObjectOfType<AudioManager>().Play("death");
             anim.SetTrigger("Front_Death");
             WaitForSeconds(1);    
             
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Front_Death"))
-            {
+            {   
+
                 if (timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
                 Destroy(gameObject);
             }
@@ -55,8 +58,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnDestroy()
     {
- 
 
+        
 
     }
 }
