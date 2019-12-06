@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour
         anim.SetBool("Front_Death", false);
 
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -29,39 +28,43 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            GameObject eff = Instantiate(effect, transform.position, Quaternion.identity);
+            Destroy(eff, 0.5f);
+            hp--;
+        }
+    }
 
     public void Update()
     {
         if (hp <= 0)
         {
-            Debug.Log(hp);
+            GetComponent<BoxCollider2D>().enabled = false;
             deathtimer = Time.time;
             FindObjectOfType<AudioManager>().Play("death");
             anim.SetTrigger("Front_Death");
-            WaitForSeconds(1);    
-            
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Front_Death"))
-            {   
+            WaitForSeconds(1);
 
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Front_Death"))
+            {
                 if (timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
                 Destroy(gameObject);
             }
-           
+
         }
     }
 
     private void WaitForSeconds(int v)
     {
-        
+
     }
 
     private void OnDestroy()
     {
 
-        
-
     }
 }
 
-   
