@@ -85,7 +85,7 @@ public class TimerManager : MonoBehaviour
             {
                 if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);
             }
-            _playerStateChanged = true;
+            _playerStateChanged = false;
         }
     }
 }
