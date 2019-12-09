@@ -35,6 +35,8 @@ public class Timer : MonoBehaviour
         if(!manager._playerIsDead) timeToEnd -= Time.fixedDeltaTime;
         if(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
             while(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
+
+                _listOfBullets[_listOfBullets.Count-1].GetComponent<SpriteRenderer>().sprite = sprites[sprites.Count-1];
                
                 GameObject bullet = Instantiate(bulletPrefab,
                 new Vector3(_listOfBullets[_listOfBullets.Count-1].transform.position.x + .8f,
