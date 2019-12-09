@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Revolver : Weapon
+public class Riffle : Weapon
 {
-    public Revolver()
+    public Riffle()
     {
-        name = "Revolver";
-        magazinesize = 6;
+        name = "Riffle";
+        magazinesize = 3;
         lastFire = 0;
         FireDelay = 0;
         ReloadDelay = 0;
-        //Debug.Log("Revolver");
+        //Debug.Log("Riffle");
     }
-    public float bulletforce = 10.0f;
+    public float bulletforce = 15.0f;
     public override void Shoot(CameraShake camShake, Transform firePoint)
     {
         if (Time.time > lastFire + FireDelay + ReloadDelay)
@@ -40,13 +40,12 @@ public class Revolver : Weapon
     public override void Reload()
     {
         Object.FindObjectOfType<AudioManager>().Play("reload");
-        magazinesize = 6;
+        magazinesize = 3;
         ReloadDelay = 0.5f;
     }
-
     public override void setBulletType(GameObject bulletPrefab)
     {
         this.bulletPrefab = bulletPrefab;
-        this.bulletPrefab.GetComponent<BulletController>().lifeTime = 1.5f;
+        this.bulletPrefab.GetComponent<BulletController>().lifeTime = 3.0f;
     }
 }

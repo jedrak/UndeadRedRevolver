@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2019813351261415223}
   - component: {fileID: 2051653369825844321}
   m_Layer: 0
-  m_Name: BulletPenetration
+  m_Name: BulletPenetrating
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81e63b70b6cb2d4a954386fe13da14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 1
+  lifeTime: 1.5
 --- !u!212 &2658107503121232314
 SpriteRenderer:
   m_ObjectHideFlags: 0

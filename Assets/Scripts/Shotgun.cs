@@ -6,13 +6,14 @@ public class Shotgun : Weapon
 {
     public Shotgun()
     {
-        name = "Revolver";
+        name = "Shotgun";
         magazinesize = 6;
         lastFire = 0;
         FireDelay = 0;
         ReloadDelay = 0;
+        //Debug.Log("Shotgun");
     }
-    public float bulletforce = 1f;
+    public float bulletforce = 10.0f;
     public override void Shoot(CameraShake camShake, Transform firePoint)
     {
         if (Time.time > lastFire + FireDelay + ReloadDelay)
@@ -50,5 +51,11 @@ public class Shotgun : Weapon
         Object.FindObjectOfType<AudioManager>().Play("reload");
         magazinesize = 6;
         ReloadDelay = 1.0f;
+    }
+
+    public override void setBulletType(GameObject bulletPrefab)
+    {
+        this.bulletPrefab = bulletPrefab;
+        this.bulletPrefab.GetComponent<BulletController>().lifeTime = 2.0f;
     }
 }

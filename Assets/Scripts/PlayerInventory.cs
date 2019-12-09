@@ -4,29 +4,64 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private List<Item> inventory;
+    private const int ITEM_SLOTS = 8;
+    private const int WEAPON_SLOTS = 2;
+
+    private List<Item> items;
+    private List<Weapon> weapons;
+
     private void Start()
     {
-        inventory = new List<Item>();
+        items = new List<Item>();
+        weapons = new List<Weapon>();
     }
+
     public bool addItem(Item item)
     {
-        // if (!inventory.Contains(item)) inventory.Add(item);
-        bool found = false;
-        foreach (var it in inventory)
+        if (items.Count < ITEM_SLOTS)
         {
-            if (it.itemName == item.itemName)
+            /*bool found = false;
+
+            foreach (var it in items)
             {
-                found = true;
-                break;
+                if (it.name == item.name)
+                {
+                    found = true;
+                    break;
+                }
             }
+            if (!found)
+            {*/
+                items.Add(item);
+                return true;
+            /*}*/
         }
-        if (!found)
-        {
-            inventory.Add(item);
-            return true;
-        }
+        
         return false;
         // Debug.Log(inventory.Count);
+    }
+
+    public bool addItem(Weapon weapon)
+    {
+        if (weapons.Count < WEAPON_SLOTS)
+        {
+            bool found = false;
+
+            foreach (var it in weapons)
+            {
+                if (it.name == weapon.name)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                weapons.Add(weapon);
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

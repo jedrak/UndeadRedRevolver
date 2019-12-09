@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon //: MonoBehaviour
+public abstract class Weapon
 {
     public string name;
     protected int magazinesize;
@@ -12,11 +12,7 @@ public abstract class Weapon //: MonoBehaviour
     public GameObject bulletPrefab;
     public float camShakeAmt = 0.05f;
     public float camShakeLength = 0.1f;
-    public int Magazinesize { get => magazinesize; set => magazinesize = value; }
     public abstract void Shoot(CameraShake camShake, Transform firePoint);
     public abstract void Reload();
-    public void setBulletType(GameObject bulletPrefab)
-    {
-        this.bulletPrefab = bulletPrefab;
-    }
+    public abstract void setBulletType(GameObject bulletPrefab);
 }

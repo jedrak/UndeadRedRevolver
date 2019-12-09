@@ -22,27 +22,23 @@ public class PlayerCollision : MonoBehaviour
             
             Destroy(collision.gameObject);
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (manager._playerIsDead)
             {
-                if (manager._playerIsDead)
-                {
-                    manager._playerIsDead = false;
-                    manager._playerStateChanged = true;
-                }
-                else
-                {
-                    timer.timeToEnd -= 10;
-                }
-
-                Destroy(collision.gameObject);
+                manager._playerIsDead = false;
+                manager._playerStateChanged = true;
             }
+            else
+            {
+                timer.timeToEnd -= 10;
+            }
+
+            Destroy(collision.gameObject);
         }
     }
 }
