@@ -11,6 +11,10 @@ TagManager:
   - Spawner
   - EnemyBullet
   - UI
+  - DoorE
+  - DoorS
+  - DoorN
+  - DoorW
   layers:
   - Default
   - TransparentFX

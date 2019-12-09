@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDoorChecker : MonoBehaviour
 {
     public RoomGenerator generator;
+    public Map map;
     public TimerManager manager;
     private bool _enemiesInRoom;
 
@@ -26,15 +27,53 @@ public class PlayerDoorChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Door" && !manager._playerIsDead && !_enemiesInRoom)
+        if(collision.gameObject.tag == "DoorN" && !manager._playerIsDead && !_enemiesInRoom)
         {
+
             foreach(Transform t in generator.GetComponentInChildren<Transform>())
             {
                 if(t.gameObject.tag != "Spawner") Destroy(t.gameObject);     
             }
-            transform.Translate(0, -18, 0, generator.transform);
-            generator.generateRoom();
-            manager.score++;
+            transform.Translate(0, -30, 0, generator.transform);
+            map._playerY++;
+            map._playerRoomChanged = true;
+            //manager.score++;
+        }
+        if (collision.gameObject.tag == "DoorS" && !manager._playerIsDead && !_enemiesInRoom)
+        {
+
+            foreach (Transform t in generator.GetComponentInChildren<Transform>())
+            {
+                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+            }
+            transform.Translate(0, 30, 0, generator.transform);
+            map._playerY--;
+            map._playerRoomChanged = true;
+            //manager.score++;
+        }
+        if (collision.gameObject.tag == "DoorW" && !manager._playerIsDead && !_enemiesInRoom)
+        {
+
+            foreach (Transform t in generator.GetComponentInChildren<Transform>())
+            {
+                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+            }
+            transform.Translate(45, 0, 0, generator.transform);
+            map._playerX--;
+            map._playerRoomChanged = true;
+            //manager.score++;
+        }
+        if (collision.gameObject.tag == "DoorE" && !manager._playerIsDead && !_enemiesInRoom)
+        {
+
+            foreach (Transform t in generator.GetComponentInChildren<Transform>())
+            {
+                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+            }
+            transform.Translate(-45, 0, 0, generator.transform);
+            map._playerX++;
+            map._playerRoomChanged = true;
+            //manager.score++;
         }
     }
 }
