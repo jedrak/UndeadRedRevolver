@@ -28,7 +28,15 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            GameObject eff = Instantiate(effect, transform.position, Quaternion.identity);
+            Destroy(eff, 0.5f);
+            hp--;
+        }
+    }
 
     public void Update()
     {
@@ -37,28 +45,27 @@ public class EnemyHealth : MonoBehaviour
             deathtimer = Time.time;
             FindObjectOfType<AudioManager>().Play("death");
             anim.SetTrigger("Front_Death");
-            WaitForSeconds(1);    
-            
+            WaitForSeconds(1);
+
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Front_Death"))
             {
                 if (timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
                 Destroy(gameObject);
             }
-           
+
         }
     }
 
     private void WaitForSeconds(int v)
     {
-        
+
     }
 
     private void OnDestroy()
     {
- 
+
 
 
     }
 }
 
-   
