@@ -6,6 +6,7 @@ using UnityEngine;
 public class _Room 
 {
     public int[] contents = new int[15];
+    public bool empty = false;
 
     public void generate()
     {
@@ -24,7 +25,6 @@ public class _Room
             else if (rand > 92 && rand < 96) whichPrefab = 8;
             else if (rand > 96 && rand < 100) whichPrefab = 9;
             contents[i] = whichPrefab;
-            Debug.Log(contents[i]);
         }
     }
 }
@@ -32,10 +32,13 @@ public class _Room
 public class Map : MonoBehaviour
 {
     public GameObject[] doors;
+    public GameObject[] blocks;
     public int columns;
     public int rows;
     private RoomGenerator _generator;
     private _Room[,] map;
+    public int nrOfEmptyRooms;
+
     public uint _playerX { get; set; }
     public uint _playerY { get; set; }
     public bool _playerRoomChanged { private get; set; }
@@ -44,10 +47,10 @@ public class Map : MonoBehaviour
     {
         _generator = GetComponent<RoomGenerator>();
         map = new _Room[rows, columns];
-        //Debug.Log(map[0, 0]);
         _playerX = 0;
         _playerY = 0;
         _playerRoomChanged = true;
+        
         for(int i = 0; i < rows; i++)
         {
             for(int j = 0; j < columns; j++)
@@ -56,22 +59,61 @@ public class Map : MonoBehaviour
                 map[i, j].generate();
             }
         }
+        for(int i = 0; i < nrOfEmptyRooms; i++)
+        {
+            int roomX = Random.Range(1, columns);
+            int roomY = Random.Range(1, rows);
+            Debug.Log("X: "+roomX + " Y: "+roomY);
+            map[roomX, roomY].empty = true;
+        }
 
     }
     private void _doorHandle()
     {
         //N
-        if (_playerY == columns - 1 ) doors[0].SetActive(false);
-        else doors[0].SetActive(true);
+        if (_playerY == columns - 1 || map[_playerX, _playerY+1].empty)
+        {
+            doors[0].SetActive(false);
+            blocks[0].SetActive(true);
+        }
+        else
+        {
+            doors[0].SetActive(true);
+            blocks[0].SetActive(false);
+        }
         //S
-        if (_playerY == 0) doors[1].SetActive(false);
-        else doors[1].SetActive(true);
+        if (_playerY == 0 || map[_playerX, _playerY - 1].empty)
+        {
+            doors[1].SetActive(false);
+            blocks[1].SetActive(true);
+        }
+        else
+        {
+            doors[1].SetActive(true);
+            blocks[1].SetActive(false);
+        }
         //W
-        if (_playerX == 0) doors[2].SetActive(false);
-        else doors[2].SetActive(true);
+        if (_playerX == 0 || map[_playerX - 1, _playerY].empty)
+        {
+            doors[2].SetActive(false);
+            blocks[2].SetActive(true);
+        }
+        else
+        {
+            doors[2].SetActive(true);
+            blocks[2].SetActive(false);
+        }
         //E
-        if (_playerX == rows - 1) doors[3].SetActive(false);
-        else doors[3].SetActive(true);
+        if (_playerX == rows - 1 || map[_playerX + 1, _playerY].empty)
+        {
+            doors[3].SetActive(false);
+            blocks[3].SetActive(true);
+        }
+        else
+        {
+            doors[3].SetActive(true);
+            blocks[3].SetActive(false);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -80,6 +122,7 @@ public class Map : MonoBehaviour
         {
             _generator.instantiateRoom(map[_playerX, _playerY].contents);
             _playerRoomChanged = false;
+            Debug.Log(_playerX + " " + _playerY);
             _doorHandle();
         }
     }
