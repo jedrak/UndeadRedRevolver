@@ -14,16 +14,13 @@ public class ItemShield : Item
     public override bool use()
     {
         // TODO Resources/Shield.png 
-        Sprite shield = Resources.Load<Sprite>(name);
-        
+        //Sprite shield = Resources.Load<Sprite>(name);
+
         // Create GameObject "Shield" under Player
-
-        // Add CircleCollider
-
-        // That should stop enemies from touching Player
-
-        // Destroy after some peroid of time ( like in BulletController )
-        
+        //GameObject.FindGameObjectWithTag("Player").AddComponent<Shield>();
+                                                                // Add CircleCollider
+                                                                // That should stop enemies from touching Player
+                                                                // Destroy after some peroid of time ( like in BulletController )
         return true;
     }
 }

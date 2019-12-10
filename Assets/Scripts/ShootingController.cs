@@ -23,6 +23,15 @@ public class ShootingController : MonoBehaviour
 
     CameraShake camShake;
 
+
+    // Miało zapobiegać strzelaniu gdy naciskamy gui, ale update wykonuje się przed ustawieniem flagi
+    public bool uiClicked;
+    public void setUiClicked(bool status)
+    {
+        uiClicked = status;
+        //Debug.Log(uiClicked);
+    }
+
     void Start()
     {
         camShake = GetComponent<CameraShake>();
@@ -43,9 +52,21 @@ public class ShootingController : MonoBehaviour
 
             if (++weaponIndex > 3) weaponIndex = 1;
 
-            if (weaponIndex == 1) weapon = new Revolver();
-            if (weaponIndex == 2) weapon = new Shotgun();
-            if (weaponIndex == 3) weapon = new Riffle();
+            if (weaponIndex == 1)
+            {
+                weapon = new Revolver();
+                Debug.Log("Revolver");
+            }
+            if (weaponIndex == 2)
+            {
+                weapon = new Shotgun();
+                Debug.Log("Shotgun");
+            }
+            if (weaponIndex == 3)
+            {
+                weapon = new Riffle();
+                Debug.Log("Riffle");
+            }
 
             setAmmo();
         }
@@ -57,11 +78,14 @@ public class ShootingController : MonoBehaviour
 
             setAmmo();
         }
-        if (Input.GetButtonDown("Fire1"))
+        
+        if (Input.GetButtonDown("Fire1")) // TODO  && not_interact_witch_inventory 
         {
+            //Debug.Log("strzał: " + uiClicked);
             weapon.Shoot(camShake, firePoint);
         }
 
+        //uiClicked = false;
     }
 
     private void setAmmo()

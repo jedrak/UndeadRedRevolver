@@ -6,6 +6,7 @@ public class ItemObject : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public Item item;
+    public GameObject itemButton;
 
     void Start()
     {
@@ -20,11 +21,19 @@ public class ItemObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            if (other.gameObject.GetComponent<PlayerInventory>().addItem(item))
+            PlayerInventory inv = other.gameObject.GetComponent<PlayerInventory>();
+            for (int i = 0; i < inv.itemSlots.Length; i++)
             {
-                Destroy(gameObject);
+                if (inv.isItem[i] == false)
+                {
+                    inv.isItem[i] = true;
+                    GameObject go = Instantiate(itemButton, inv.itemSlots[i].transform, false);
+                    go.GetComponent<ItemButton>().item = item;
+                    Destroy(gameObject);
+                    break;
+                }
             }
         }
     }

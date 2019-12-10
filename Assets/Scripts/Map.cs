@@ -24,7 +24,7 @@ public class _Room
             else if (rand > 92 && rand < 96) whichPrefab = 8;
             else if (rand > 96 && rand < 100) whichPrefab = 9;
             contents[i] = whichPrefab;
-            Debug.Log(contents[i]);
+            //Debug.Log(contents[i]);
         }
     }
 }

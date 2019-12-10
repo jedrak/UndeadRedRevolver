@@ -58,7 +58,7 @@ public class Timer : MonoBehaviour
         }
         int nr_of_sp = ((int)timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 10;
         if (nr_of_sp < 0) nr_of_sp = 0;
-        Debug.Log(nr_of_sp);
+        //Debug.Log(nr_of_sp);
         _listOfBullets[_listOfBullets.Count - 1].GetComponent<SpriteRenderer>().sprite =  sprites[nr_of_sp];
 
 
