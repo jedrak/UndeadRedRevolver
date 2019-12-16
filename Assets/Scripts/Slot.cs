@@ -19,7 +19,6 @@ public class Slot : MonoBehaviour
         if (transform.childCount < 2)      // 1 = cross, 2 = cross + item
         {
             inv.isItem[slotIndex] = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ShootingController>().setUiClicked(true);
         }
     }
 

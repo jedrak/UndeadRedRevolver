@@ -15,6 +15,7 @@ TagManager:
   - DoorS
   - DoorN
   - DoorW
+  - Shield
   layers:
   - Default
   - TransparentFX

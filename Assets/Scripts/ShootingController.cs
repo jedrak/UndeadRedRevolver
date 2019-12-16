@@ -23,15 +23,6 @@ public class ShootingController : MonoBehaviour
 
     CameraShake camShake;
 
-
-    // Miało zapobiegać strzelaniu gdy naciskamy gui, ale update wykonuje się przed ustawieniem flagi
-    public bool uiClicked;
-    public void setUiClicked(bool status)
-    {
-        uiClicked = status;
-        //Debug.Log(uiClicked);
-    }
-
     void Start()
     {
         camShake = GetComponent<CameraShake>();
@@ -42,10 +33,18 @@ public class ShootingController : MonoBehaviour
 
     void Update()
     {
+        // DEBUG
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            gameObject.GetComponent<PlayerInventory>().activeNewItemSlot();
+        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             weapon.Reload();
         }
+
+        // WEAPON CHAGE
         if (Input.GetKeyDown(KeyCode.Q))
         {
             // @HARDCODED
@@ -70,6 +69,8 @@ public class ShootingController : MonoBehaviour
 
             setAmmo();
         }
+
+        // AMMO CHAGE
         if (Input.GetKeyDown(KeyCode.E))
         {
             // @HARDCODED
@@ -79,13 +80,10 @@ public class ShootingController : MonoBehaviour
             setAmmo();
         }
         
-        if (Input.GetButtonDown("Fire1")) // TODO  && not_interact_witch_inventory 
+        if (Input.GetButtonDown("Fire1"))
         {
-            //Debug.Log("strzał: " + uiClicked);
             weapon.Shoot(camShake, firePoint);
         }
-
-        //uiClicked = false;
     }
 
     private void setAmmo()

@@ -6,9 +6,9 @@ public class ItemTime : Item
 {
     private const int time = 60; // seconds
     private Timer timer;
-    public ItemTime(Timer timer)
+    public ItemTime(GameObject player)
     {
-        this.timer = timer;
+        this.timer = player.GetComponentInParent<TimerManager>().timer;
         name = "Time";
     }
 
@@ -16,9 +16,16 @@ public class ItemTime : Item
     {
         // TODO particles effect or sth??
 
-
-        timer.timeToEnd += time;
-        
-        return true;
+        if (GameObject.FindObjectOfType<TimerManager>()._playerIsDead == false)
+        {
+            Debug.Log("Time befor: " + timer.timeToEnd);
+            timer.timeToEnd += time;
+            Debug.Log("Time after: " + timer.timeToEnd);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

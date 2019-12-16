@@ -10,12 +10,47 @@ public class PlayerInventory : MonoBehaviour
     public bool[] isItem;
     public GameObject[] itemSlots;
 
-    private List<Weapon> weapons;
+    public bool[] isWeapon;
+    public GameObject[] weapons;
+
+    private GameObject shield;
+    private float shieldLifeTime = 5.0f;
 
     private void Start()
     {
+        shield = GameObject.FindGameObjectWithTag("Shield");
+        shield.SetActive(false);
+        for (int i = 2; i < ITEM_SLOTS; i++)
+        {
+            isItem[i] = true;
+            itemSlots[i].SetActive(false);
+        }
     }
 
+    public bool activateShield()
+    {
+        shield.SetActive(true);
+        StartCoroutine(ShieldTime());
+        return true;
+    }
+    IEnumerator ShieldTime()
+    {
+        yield return new WaitForSeconds(shieldLifeTime);
+        shield.SetActive(false);
+    }
+
+    public void activeNewItemSlot()
+    {
+        for (int i = 0; i < ITEM_SLOTS; i++)
+        {
+            if(itemSlots[i].activeSelf == false)
+            {
+                isItem[i] = false;
+                itemSlots[i].gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
 
     public bool addItem(Weapon weapon)
     {

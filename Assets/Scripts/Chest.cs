@@ -55,7 +55,7 @@ public class Chest : MonoBehaviour
         int rand = UnityEngine.Random.Range(1, 50);
 
         if (rand < 10) item = new ItemShield(player);
-        else if (rand < 20) item = new ItemTime(player.GetComponentInParent<TimerManager>().timer);
+        else if (rand < 20) item = new ItemTime(player);
         // TODO more items
         else item = new ItemShield(player);
         return item;

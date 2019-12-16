@@ -20,9 +20,10 @@ public class ItemButton : MonoBehaviour
 
     public void Use()
     {
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<ShootingController>().setUiClicked(true);
-        item.use();
-        Debug.Log("Item \"" + item.name + "\" used.");
-        Destroy(gameObject);
+        if (item.use())
+        {
+            Debug.Log("Item \"" + item.name + "\" used.");
+            Destroy(gameObject);
+        }
     }
 }
