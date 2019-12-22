@@ -20,14 +20,13 @@ public class Riffle : Weapon
         {
             ReloadDelay = 0;
 
-            int rand = Random.Range(1, 7);
 
             GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             camShake.Shake(camShakeAmt, camShakeLength);
 
             //bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletforce, ForceMode2D.Impulse);
-            Object.FindObjectOfType<AudioManager>().Play("gunshot" + rand);
+            Object.FindObjectOfType<AudioManager>().Play("riffle");
 
             magazinesize--;
 

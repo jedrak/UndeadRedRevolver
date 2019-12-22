@@ -16,6 +16,7 @@ TagManager:
   - DoorN
   - DoorW
   - Shield
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4233160829
+    locked: 0
+  - name: Gun
+    uniqueID: 2390156227
     locked: 0

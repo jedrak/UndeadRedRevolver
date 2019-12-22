@@ -42,5 +42,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+        //Invoke("audioFinished", s.clip.length);
     }
 }
