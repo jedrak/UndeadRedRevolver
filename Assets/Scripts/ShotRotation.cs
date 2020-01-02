@@ -31,16 +31,16 @@ public class ShotRotation : MonoBehaviour
 
 		float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   // find the angle in degrees
 		transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
-		Debug.Log(type);
+		
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
-			Debug.Log(type);
+			
 			type++;
 			if (type > 2)
 			{
 				type = 0;
 			}
-			Debug.Log(type);
+			
 		}
 		if (type == 0)
 		{

@@ -3,8 +3,10 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
+
 public class AudioManager : MonoBehaviour
 {
+    public TimerManager timerManager;
     public Sound[] sounds;
     public static AudioManager instance;
     // Start is called before the first frame update
@@ -31,6 +33,11 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        //if(timerManager._playerIsDead)
+        //{
+        //    Play("whiledead");
+        //}
+        //else
         Play("Theme");
     }
     public void Play(string name)
