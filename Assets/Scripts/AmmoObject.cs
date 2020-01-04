@@ -29,6 +29,7 @@ public class AmmoObject : MonoBehaviour
                 Destroy(gameObject);
             } */
             other.gameObject.GetComponent<ShootingController>().addAmmo(ammoType, bulletCount);
+            Destroy(gameObject);
         }
     }
 }
