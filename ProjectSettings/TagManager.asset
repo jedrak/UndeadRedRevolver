@@ -70,3 +70,6 @@ TagManager:
   - name: Gun
     uniqueID: 2390156227
     locked: 0
+  - name: Efffects
+    uniqueID: 1375367569
+    locked: 0

@@ -45,11 +45,31 @@ public class EnemyHealth : MonoBehaviour
             deathtimer = Time.time;
             FindObjectOfType<AudioManager>().Play("death");
             anim.SetTrigger("Front_Death");
-            WaitForSeconds(1);
+            //WaitForSeconds(1);
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Front_Death"))
             {
                 if (timerManager._playerIsDead) timerManager.monsterKillcount += maxHealth;
+                if(timerManager.monsterKillcount==20)
+                {
+                    FindObjectOfType<AudioManager>().Play("mk");
+
+                }
+                if (timerManager.monsterKillcount == 40)
+                {
+                    FindObjectOfType<AudioManager>().Play("un");
+
+                }
+                if (timerManager.monsterKillcount == 60)
+                {
+                    FindObjectOfType<AudioManager>().Play("incre");
+
+                }
+                if (timerManager.monsterKillcount == 80)
+                {
+                    FindObjectOfType<AudioManager>().Play("anime");
+
+                }
                 Destroy(gameObject);
             }
 
