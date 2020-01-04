@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1815913011
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: -6834524911116659543, guid: 3db7c94c9b8aaa24a833e104d140e101,
     type: 3}
@@ -142,6 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad406e118d92bb4e9bdac9e44b02a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  roomIndexX: 0
+  roomIndexY: 0
   itemPrefab: {fileID: 6514167529090015004, guid: 48b6c637627a7be469310868842fc0ab,
     type: 3}
   weaponPrefab: {fileID: -3202054372594950343, guid: 42cd21585b51d334390697880057f7ec,

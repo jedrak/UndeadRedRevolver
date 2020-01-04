@@ -42,6 +42,11 @@ public class Map : MonoBehaviour
     public uint _playerX { get; set; }
     public uint _playerY { get; set; }
     public bool _playerRoomChanged { private get; set; }
+    [SerializeField]
+    public GameObject chestPrefab;
+    [SerializeField]
+    public GameObject Chests;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,11 +68,27 @@ public class Map : MonoBehaviour
         {
             int roomX = Random.Range(1, columns);
             int roomY = Random.Range(1, rows);
-            Debug.Log("X: "+roomX + " Y: "+roomY);
+            //Debug.Log("X: "+roomX + " Y: "+roomY);
             map[roomX, roomY].empty = true;
         }
+        _chestHandle();
 
     }
+
+    private void _chestHandle()
+    {
+        int nrOfchests = (rows * columns - nrOfEmptyRooms) / 3;
+        for(int i = 0; i<nrOfchests; i++)
+        {
+            GameObject buff = Instantiate(chestPrefab, new Vector3(Random.Range(0, 30), Random.Range(0, 15), 0), Quaternion.identity);
+            buff.transform.parent = Chests.transform;
+            buff.GetComponent<Chest>().roomIndexX = (uint)Random.Range(0, rows);
+            buff.GetComponent<Chest>().roomIndexY = (uint)Random.Range(0, columns);
+            Debug.Log(buff.GetComponent<Chest>().roomIndexX + " " + buff.GetComponent<Chest>().roomIndexY, this);
+        }
+    }
+
+
     private void _doorHandle()
     {
         //N
@@ -115,6 +136,7 @@ public class Map : MonoBehaviour
             blocks[3].SetActive(false);
         }
     }
+
     // Update is called once per frame
     void Update()
     {

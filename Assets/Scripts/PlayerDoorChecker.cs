@@ -32,7 +32,7 @@ public class PlayerDoorChecker : MonoBehaviour
 
             foreach(Transform t in generator.GetComponentInChildren<Transform>())
             {
-                if(t.gameObject.tag != "Spawner") Destroy(t.gameObject);     
+                if(!(t.gameObject.tag == "Spawner" || t.gameObject.tag == "Chest")) Destroy(t.gameObject);     
             }
             transform.Translate(0, -30, 0, generator.transform);
             map._playerY++;
@@ -44,7 +44,7 @@ public class PlayerDoorChecker : MonoBehaviour
 
             foreach (Transform t in generator.GetComponentInChildren<Transform>())
             {
-                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+                if (!(t.gameObject.tag == "Spawner" || t.gameObject.tag == "Chest")) Destroy(t.gameObject);
             }
             transform.Translate(0, 30, 0, generator.transform);
             map._playerY--;
@@ -56,7 +56,7 @@ public class PlayerDoorChecker : MonoBehaviour
 
             foreach (Transform t in generator.GetComponentInChildren<Transform>())
             {
-                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+                if (!(t.gameObject.tag == "Spawner" || t.gameObject.tag == "Chest")) Destroy(t.gameObject);
             }
             transform.Translate(45, 0, 0, generator.transform);
             map._playerX--;
@@ -68,7 +68,7 @@ public class PlayerDoorChecker : MonoBehaviour
 
             foreach (Transform t in generator.GetComponentInChildren<Transform>())
             {
-                if (t.gameObject.tag != "Spawner") Destroy(t.gameObject);
+                if (!(t.gameObject.tag == "Spawner" || t.gameObject.tag == "Chest")) Destroy(t.gameObject);
             }
             transform.Translate(-45, 0, 0, generator.transform);
             map._playerX++;
