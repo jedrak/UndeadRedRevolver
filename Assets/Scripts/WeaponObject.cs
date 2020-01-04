@@ -15,14 +15,14 @@ public class WeaponObject : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<PlayerInventory>().addItem(weapon))
+            if (other.gameObject.GetComponent<ShootingController>().weaponManager.addWeapon(weapon))
             {
                 Destroy(gameObject);
             }

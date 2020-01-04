@@ -19,16 +19,18 @@ public class ShootingController : MonoBehaviour
     public GameObject bulletPenetratingPrefab;
 
     private AmmoType bulletType;
-    private int weaponIndex;
+    [SerializeField]
+    public WeaponManager weaponManager;
+    private ShotRotation shotRotation;
 
     CameraShake camShake;
 
     void Start()
     {
+        shotRotation = GetComponentInChildren<ShotRotation>();
         camShake = GetComponent<CameraShake>();
         weapon.setBulletType(bulletDefaultPrefab);
         bulletType = AmmoType.DEFAULT;
-        weaponIndex = 1;
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class ShootingController : MonoBehaviour
         {
             gameObject.GetComponent<PlayerInventory>().activeNewItemSlot();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             weapon.Reload();
@@ -47,25 +49,8 @@ public class ShootingController : MonoBehaviour
         // WEAPON CHAGE
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // @HARDCODED
-
-            if (++weaponIndex > 3) weaponIndex = 1;
-
-            if (weaponIndex == 1)
-            {
-                weapon = new Revolver();
-                Debug.Log("Revolver");
-            }
-            if (weaponIndex == 2)
-            {
-                weapon = new Shotgun();
-                Debug.Log("Shotgun");
-            }
-            if (weaponIndex == 3)
-            {
-                weapon = new Riffle();
-                Debug.Log("Riffle");
-            }
+            weapon = weaponManager.changeWeapon();
+            shotRotation.weaponChanged(weapon.name);
 
             setAmmo();
         }
@@ -79,7 +64,7 @@ public class ShootingController : MonoBehaviour
 
             setAmmo();
         }
-        
+
         if (Input.GetButtonDown("Fire1"))
         {
             weapon.Shoot(camShake, firePoint);
