@@ -36,6 +36,10 @@ public class Chest : MonoBehaviour
         {
             col.enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
         }
+        foreach (ParticleSystem pc in this.GetComponentsInChildren<ParticleSystem>())
+        {
+            pc.gameObject.SetActive(map._playerX == roomIndexX && map._playerY == roomIndexY);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
