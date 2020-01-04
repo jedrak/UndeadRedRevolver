@@ -6,7 +6,9 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     private bool isOpen;
-
+    public Map map;
+    public uint roomIndexX;
+    public uint roomIndexY;
     [SerializeField]
     private ItemObject itemPrefab;
     [SerializeField]
@@ -16,6 +18,7 @@ public class Chest : MonoBehaviour
 
     void Start()
     {
+        map = GetComponentInParent<Map>();
         anim = GetComponent<Animator>();
         anim.SetBool("open", false);
         isOpen = false;
@@ -23,7 +26,16 @@ public class Chest : MonoBehaviour
 
     void Update()
     {
-
+        GetComponent<SpriteRenderer>().enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
+        GetComponent<BoxCollider2D>().enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
+        foreach(SpriteRenderer sp in this.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sp.enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
+        }
+        foreach (BoxCollider2D col in this.GetComponentsInChildren<BoxCollider2D>())
+        {
+            col.enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

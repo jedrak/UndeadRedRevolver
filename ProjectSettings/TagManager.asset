@@ -17,6 +17,7 @@ TagManager:
   - DoorW
   - Shield
   - Gun
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: InactiveChest
+    uniqueID: 3629291479
+    locked: 0
   - name: BG
     uniqueID: 2479054285
     locked: 0
