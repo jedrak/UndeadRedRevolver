@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AmmoType
+{
+    DEFAULT,
+    BOUNCY,
+    PENETRATING,
+    LAST = 2
+}
+
 public class ShootingController : MonoBehaviour
 {
-    enum AmmoType
-    {
-        DEFAULT,
-        BOUNCY,
-        PENETRATING,
-        LAST = 2
-    }
+
 
     private Weapon weapon = new Revolver();
     public Transform firePoint;
@@ -69,6 +71,7 @@ public class ShootingController : MonoBehaviour
         {
             // @HARDCODED
 
+            // TODO if ammo avaiable
             if (++bulletType > AmmoType.LAST) bulletType = AmmoType.DEFAULT;
 
             setAmmo();
@@ -80,22 +83,27 @@ public class ShootingController : MonoBehaviour
         }
     }
 
+    public void addAmmo(AmmoType ammoType, int bulletCount)
+    {
+        // TODO 
+    }
+
     private void setAmmo()
     {
         if (bulletType == AmmoType.DEFAULT)
         {
             weapon.setBulletType(bulletDefaultPrefab);
-            Debug.Log("Normal bullet");
+            Debug.Log("Bullet : " + bulletType.ToString());
         }
         else if (bulletType == AmmoType.BOUNCY)
         {
             weapon.setBulletType(bulletBouncyPrefab);
-            Debug.Log("Bouncy bullet");
+            Debug.Log("Bullet : " + bulletType.ToString());
         }
         else if (bulletType == AmmoType.PENETRATING)
         {
             weapon.setBulletType(bulletPenetratingPrefab);
-            Debug.Log("Penetrating bullet");
+            Debug.Log("Bullet : " + bulletType.ToString());
         }
     }
 }

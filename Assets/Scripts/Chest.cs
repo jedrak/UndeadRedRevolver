@@ -10,6 +10,8 @@ public class Chest : MonoBehaviour
     public uint roomIndexX;
     public uint roomIndexY;
     [SerializeField]
+    private AmmoObject ammoPrefab;
+    [SerializeField]
     private ItemObject itemPrefab;
     [SerializeField]
     private WeaponObject weaponPrefab;
@@ -28,7 +30,7 @@ public class Chest : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
         GetComponent<BoxCollider2D>().enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
-        foreach(SpriteRenderer sp in this.GetComponentsInChildren<SpriteRenderer>())
+        foreach (SpriteRenderer sp in this.GetComponentsInChildren<SpriteRenderer>())
         {
             sp.enabled = map._playerX == roomIndexX && map._playerY == roomIndexY;
         }
@@ -46,18 +48,25 @@ public class Chest : MonoBehaviour
     {
         if (!isOpen && other.gameObject.tag == "Player")
         {
-            int rand = UnityEngine.Random.Range(1, 50);
-            if(rand > 20)
+            int rand = UnityEngine.Random.Range(1, 100);
+            if (rand < 40)
             {
                 ItemObject io = Instantiate(itemPrefab, itemPlace.position, itemPlace.rotation, transform);
                 io.item = RandItem(other.gameObject);
+            }
+            else if (rand < 81)
+            {
+                AmmoObject io = Instantiate(ammoPrefab, itemPlace.position, itemPlace.rotation, transform);
+                if (rand < 70) io.ammoType = AmmoType.BOUNCY;
+                else io.ammoType = AmmoType.PENETRATING;
+                io.bulletCount = rand;
             }
             else
             {
                 WeaponObject io = Instantiate(weaponPrefab, itemPlace.position, itemPlace.rotation, transform);
                 io.weapon = RandWeapon();
             }
-            
+
             anim.SetBool("open", true);
             // set state
             isOpen = true;
@@ -85,10 +94,10 @@ public class Chest : MonoBehaviour
 
         int rand = UnityEngine.Random.Range(1, 40);
 
-        if (rand < 10)       weapon = new Revolver();
-        else if (rand < 20)  weapon = new Shotgun();
-        else if (rand < 30)  weapon = new Riffle();
-        else                 weapon = new Revolver();
+        if (rand < 10) weapon = new Revolver();
+        else if (rand < 20) weapon = new Shotgun();
+        else if (rand < 30) weapon = new Riffle();
+        else weapon = new Revolver();
 
         return weapon;
     }
