@@ -36,7 +36,7 @@ public class ShootingController : MonoBehaviour
     void Update()
     {
         // DEBUG
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             gameObject.GetComponent<PlayerInventory>().activeNewItemSlot();
         }
@@ -50,6 +50,15 @@ public class ShootingController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             weapon = weaponManager.changeWeapon();
+            shotRotation.weaponChanged(weapon.name);
+
+            setAmmo();
+        }
+
+        // WEAPON CHAGE
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            weapon = weaponManager.dropWeapon();
             shotRotation.weaponChanged(weapon.name);
 
             setAmmo();
