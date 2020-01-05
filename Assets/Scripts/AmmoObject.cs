@@ -24,10 +24,6 @@ public class AmmoObject : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            /* if (other.gameObject.GetComponent<ShootingController>().addAmmo(ammoType, bulletCount))
-            {
-                Destroy(gameObject);
-            } */
             other.gameObject.GetComponent<ShootingController>().addAmmo(ammoType, bulletCount);
             Destroy(gameObject);
         }
