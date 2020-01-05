@@ -1,15 +1,15 @@
-﻿
-using UnityEngine.Audio;
+﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
-
 
 public class AudioManager : MonoBehaviour
 {
     public TimerManager timerManager;
+    public AudioMixer audioMixer;
+    private float masterVolume;
     public Sound[] sounds;
     public static AudioManager instance;
-    // Start is called before the first frame update
+
     void Awake()
     {
         if (instance == null)
@@ -33,6 +33,12 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        audioMixer.GetFloat("master_volume", out masterVolume);
+        masterVolume += 80.0f;
+        masterVolume /= 80.0f;
+        masterVolume /= 6.0f; // x6 bo strasznie głośne są te dzwieki
+        // Debug.Log("master volume: " + masterVolume);
+
         //if(timerManager._playerIsDead)
         //{
         //    Play("whiledead");
@@ -48,6 +54,15 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound:" + name + "not found!");
             return;
         }
+
+        if (PauseMenu.GameIsPaused)
+        {
+            s.source.pitch *= 0.5f;
+        }
+
+
+        s.source.volume = masterVolume;
+
         s.source.Play();
         //Invoke("audioFinished", s.clip.length);
     }

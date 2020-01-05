@@ -132,17 +132,17 @@ public class ShootingController : MonoBehaviour
         if (bulletType == AmmoType.DEFAULT)
         {
             weapon.setBulletType(bulletDefaultPrefab);
-            Debug.Log("Bullet : " + bulletType.ToString());
+            // Debug.Log("Bullet : " + bulletType.ToString());
         }
         else if (bulletType == AmmoType.BOUNCY)
         {
             weapon.setBulletType(bulletBouncyPrefab);
-            Debug.Log("Bullet : " + bulletType.ToString());
+            // Debug.Log("Bullet : " + bulletType.ToString());
         }
         else if (bulletType == AmmoType.PENETRATING)
         {
             weapon.setBulletType(bulletPenetratingPrefab);
-            Debug.Log("Bullet : " + bulletType.ToString());
+            // Debug.Log("Bullet : " + bulletType.ToString());
         }
     }
 
