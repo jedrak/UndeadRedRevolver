@@ -12,7 +12,7 @@ public abstract class Weapon
     public GameObject bulletPrefab;
     public float camShakeAmt = 0.05f;
     public float camShakeLength = 0.1f;
-    public abstract void Shoot(CameraShake camShake, Transform firePoint);
+    public abstract int Shoot(CameraShake camShake, Transform firePoint);
     public abstract void Reload();
     public abstract void setBulletType(GameObject bulletPrefab);
 }

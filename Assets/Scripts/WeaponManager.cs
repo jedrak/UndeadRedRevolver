@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour
 {
+    // WEAPON UI
     [SerializeField]
     private WeaponObject weaponPrefab;
     [SerializeField]
@@ -12,12 +13,12 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     public Image[] weaponSlotImage;
 
+    // WEAPON LOGIC
     private int weaponIndex = 0;
     private const int WEAPON_SLOTS = 2;
     public bool[] isWeapon = new bool[WEAPON_SLOTS];
     public Weapon[] weapons = new Weapon[WEAPON_SLOTS];
 
-    // Start is called before the first frame update
     void Start()
     {
         isWeapon[0] = true;
@@ -27,6 +28,11 @@ public class WeaponManager : MonoBehaviour
         isWeapon[1] = false;
         weapons[1] = null;
         weaponSlot[1].SetActive(false);
+    }
+
+    void Update()
+    {
+
     }
 
     public Weapon changeWeapon()
@@ -101,10 +107,5 @@ public class WeaponManager : MonoBehaviour
         weaponSlot[weaponIndex].SetActive(false);
 
         return changeWeapon();
-    }
-
-    void Update()
-    {
-
     }
 }
