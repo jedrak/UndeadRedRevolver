@@ -41,11 +41,16 @@ public class Map : MonoBehaviour
 
     public uint _playerX { get; set; }
     public uint _playerY { get; set; }
-    public bool _playerRoomChanged { private get; set; }
+    public bool _playerRoomChanged { get; set; }
     [SerializeField]
     public GameObject chestPrefab;
     [SerializeField]
     public GameObject Chests;
+    [SerializeField]
+    public GameObject respawnPrefab;
+    [SerializeField]
+    public GameObject Cementaries;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +77,7 @@ public class Map : MonoBehaviour
             map[roomX, roomY].empty = true;
         }
         _chestHandle();
+        _respawnHandle();
 
     }
 
@@ -84,10 +90,22 @@ public class Map : MonoBehaviour
             buff.transform.parent = Chests.transform;
             buff.GetComponent<Chest>().roomIndexX = (uint)Random.Range(0, rows);
             buff.GetComponent<Chest>().roomIndexY = (uint)Random.Range(0, columns);
-            Debug.Log(buff.GetComponent<Chest>().roomIndexX + " " + buff.GetComponent<Chest>().roomIndexY, this);
+            //Debug.Log(buff.GetComponent<Chest>().roomIndexX + " " + buff.GetComponent<Chest>().roomIndexY, this);
         }
     }
 
+    private void _respawnHandle()
+    {
+        int numberOfRespowns = (rows * columns - nrOfEmptyRooms) / 6;
+        for (int i = 0; i < numberOfRespowns; i++)
+        {
+            GameObject buff = Instantiate(respawnPrefab, new Vector3(Random.Range(0, 30), Random.Range(0, 15), 0), Quaternion.identity);
+            buff.transform.parent = Cementaries.transform;
+            buff.GetComponent<Cementary>().roomX = Random.Range(0, rows);
+            buff.GetComponent<Cementary>().roomY = Random.Range(0, columns);
+            //Debug.Log(buff.GetComponent<Chest>().roomIndexX + " " + buff.GetComponent<Chest>().roomIndexY, this);
+        }
+    }
 
     private void _doorHandle()
     {
@@ -144,7 +162,7 @@ public class Map : MonoBehaviour
         {
             _generator.instantiateRoom(map[_playerX, _playerY].contents);
             _playerRoomChanged = false;
-            Debug.Log(_playerX + " " + _playerY);
+            //Debug.Log(_playerX + " " + _playerY);
             _doorHandle();
         }
     }

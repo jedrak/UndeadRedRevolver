@@ -18,6 +18,7 @@ TagManager:
   - Shield
   - Gun
   - Chest
+  - Particle
   layers:
   - Default
   - TransparentFX

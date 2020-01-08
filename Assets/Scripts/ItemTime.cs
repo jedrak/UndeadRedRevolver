@@ -18,9 +18,9 @@ public class ItemTime : Item
 
         if (GameObject.FindObjectOfType<TimerManager>()._playerIsDead == false)
         {
-            Debug.Log("Time befor: " + timer.timeToEnd);
+            //Debug.Log("Time befor: " + timer.timeToEnd);
             timer.timeToEnd += time;
-            Debug.Log("Time after: " + timer.timeToEnd);
+            //Debug.Log("Time after: " + timer.timeToEnd);
             return true;
         }
         else

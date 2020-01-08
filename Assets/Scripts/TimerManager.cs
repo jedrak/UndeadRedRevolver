@@ -15,6 +15,7 @@ public class TimerManager : MonoBehaviour
     public GameObject scoreText;
     public GameObject messageText;
     public GameObject gameplayInfoText;
+    public RespawnController respawnController;
 
     private void Start()
     {
@@ -63,7 +64,7 @@ public class TimerManager : MonoBehaviour
 
             //timer.timeToEnd = 10 + 2 * monsterKillcount;
             monsterKillcount = 0;
-
+            
         }
 
         foreach (Transform t in room.GetComponentInChildren<Transform>())
@@ -81,11 +82,16 @@ public class TimerManager : MonoBehaviour
 
         if (_playerStateChanged)
         {
+            if (!_playerIsDead) respawnController.respawn();
             foreach (Transform t in room.GetComponentInChildren<Transform>())
             {
                 if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);
             }
             _playerStateChanged = false;
         }
+
+
+
+       
     }
 }

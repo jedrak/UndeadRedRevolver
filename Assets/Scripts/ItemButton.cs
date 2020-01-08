@@ -22,7 +22,7 @@ public class ItemButton : MonoBehaviour
     {
         if (item.use())
         {
-            Debug.Log("Item \"" + item.name + "\" used.");
+            //Debug.Log("Item \"" + item.name + "\" used.");
             Destroy(gameObject);
         }
     }

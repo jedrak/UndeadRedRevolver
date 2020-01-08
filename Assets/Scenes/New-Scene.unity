@@ -894,6 +894,37 @@ MonoBehaviour:
   - {fileID: 960031003}
   - {fileID: 160262291}
   isWeapon: 0000
+--- !u!1 &350162795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350162796}
+  m_Layer: 0
+  m_Name: Cemetaries
+  m_TagString: Chest
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &350162796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350162795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1500175868}
+  m_Father: {fileID: 1445899415}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369500554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,6 +3583,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370386310}
   m_CullTransparentMesh: 0
+--- !u!1001 &1381879874
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 350162796}
+    m_Modifications:
+    - target: {fileID: 1545772166440228017, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_Name
+      value: Cementary
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d884a00d7b0cd20458ef281f9c9a1f2d, type: 3}
 --- !u!1001 &1425257176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3701,6 +3801,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2233064630658534382, guid: c852fdb127a296f45a01ecb526b68647,
     type: 3}
   m_PrefabInstance: {fileID: 1697436803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1500175868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2092703968037560778, guid: d884a00d7b0cd20458ef281f9c9a1f2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381879874}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534708853
 GameObject:
