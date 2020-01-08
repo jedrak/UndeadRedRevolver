@@ -101,8 +101,14 @@ public class Map : MonoBehaviour
         {
             GameObject buff = Instantiate(respawnPrefab, new Vector3(Random.Range(0, 30), Random.Range(0, 15), 0), Quaternion.identity);
             buff.transform.parent = Cementaries.transform;
-            buff.GetComponent<Cementary>().roomX = Random.Range(0, rows);
-            buff.GetComponent<Cementary>().roomY = Random.Range(0, columns);
+            int x = 0, y = 0;
+            do
+            {
+                x = Random.Range(0, rows);
+                y = Random.Range(0, columns);
+            } while (map[x, y].empty);
+            buff.GetComponent<Cementary>().roomX = x;
+            buff.GetComponent<Cementary>().roomY = y;
             //Debug.Log(buff.GetComponent<Chest>().roomIndexX + " " + buff.GetComponent<Chest>().roomIndexY, this);
         }
     }
