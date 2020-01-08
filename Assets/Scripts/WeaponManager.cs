@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour
 {
+    // WEAPON UI
     [SerializeField]
     private WeaponObject weaponPrefab;
     [SerializeField]
@@ -12,12 +13,12 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     public Image[] weaponSlotImage;
 
+    // WEAPON LOGIC
     private int weaponIndex = 0;
     private const int WEAPON_SLOTS = 2;
     public bool[] isWeapon = new bool[WEAPON_SLOTS];
     public Weapon[] weapons = new Weapon[WEAPON_SLOTS];
 
-    // Start is called before the first frame update
     void Start()
     {
         isWeapon[0] = true;
@@ -27,6 +28,11 @@ public class WeaponManager : MonoBehaviour
         isWeapon[1] = false;
         weapons[1] = null;
         weaponSlot[1].SetActive(false);
+    }
+
+    void Update()
+    {
+
     }
 
     public Weapon changeWeapon()
@@ -54,11 +60,15 @@ public class WeaponManager : MonoBehaviour
     public bool addWeapon(Weapon weapon)
     {
         bool found = false;
-        int i = 0;
+        int i = 0, freeplace = 0;
 
         for (; i < weapons.Length; i++)
         {
-            if (isWeapon[i] == false) continue;
+            if (isWeapon[i] == false)
+            {
+                freeplace = i;
+                continue;
+            }
             if (weapons[i].name == weapon.name)
             {
                 found = true;
@@ -68,22 +78,34 @@ public class WeaponManager : MonoBehaviour
 
         if (!found)
         {
-            weapons[--i] = weapon;
-            isWeapon[i] = true;
-            weaponSlot[i].SetActive(true);
-            weaponSlotImage[i].sprite = Resources.Load<Sprite>(weapon.name);
+            weapons[freeplace] = weapon;
+            isWeapon[freeplace] = true;
+            weaponSlot[freeplace].SetActive(true);
+            weaponSlotImage[freeplace].sprite = Resources.Load<Sprite>(weapon.name);
             return true;
         }
         return false;
     }
 
-    public void dropWeapon()
+    public Weapon dropWeapon()
     {
-        // TODO 
-    }
+        // if ostatnia bron
+        int weaponsCount = 0;
+        for (int i = 0; i < isWeapon.Length; i++)
+        {
+            if (isWeapon[i]) weaponsCount++;
+        }
+        if (weaponsCount < 2) return weapons[weaponIndex];
 
-    void Update()
-    {
+        // else
+        Vector2 weaponPos = new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x - 2, GameObject.FindGameObjectWithTag("Player").transform.position.y);
+        WeaponObject io = Instantiate(weaponPrefab, weaponPos, Quaternion.identity);
+        io.weapon = weapons[weaponIndex];
 
+        isWeapon[weaponIndex] = false;
+        weapons[weaponIndex] = null;
+        weaponSlot[weaponIndex].SetActive(false);
+
+        return changeWeapon();
     }
 }

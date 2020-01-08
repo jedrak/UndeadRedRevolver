@@ -5,13 +5,9 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     private const int ITEM_SLOTS = 6;
-    /* private const int WEAPON_SLOTS = 2; */
 
     public bool[] isItem;
     public GameObject[] itemSlots;
-    /* 
-        public bool[] isWeapon;
-        public GameObject[] weapons; */
 
     private GameObject shield;
     private float shieldLifeTime = 5.0f;
@@ -52,27 +48,4 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    /* public bool addItem(Weapon weapon)
-    {
-        if (weapons.Length < WEAPON_SLOTS)
-        {
-            bool found = false;
-
-            foreach (var it in weapons)
-            {
-                if (it.name == weapon.name)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                weapons.Add(weapon);
-                return true;
-            }
-        }
-
-        return false;
-    } */
 }

@@ -145,6 +145,8 @@ MonoBehaviour:
   map: {fileID: 0}
   roomIndexX: 0
   roomIndexY: 0
+  ammoPrefab: {fileID: 713939302292857281, guid: c2bb52b52bb41894082415b1210b6bf2,
+    type: 3}
   itemPrefab: {fileID: 6514167529090015004, guid: 48b6c637627a7be469310868842fc0ab,
     type: 3}
   weaponPrefab: {fileID: -3202054372594950343, guid: 42cd21585b51d334390697880057f7ec,

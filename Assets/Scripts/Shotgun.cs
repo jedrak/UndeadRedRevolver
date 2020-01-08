@@ -14,7 +14,7 @@ public class Shotgun : Weapon
         //Debug.Log("Shotgun");
     }
     public float bulletforce = 10.0f;
-    public override void Shoot(CameraShake camShake, Transform firePoint)
+    public override int Shoot(CameraShake camShake, Transform firePoint)
     {
         if (Time.time > lastFire + FireDelay + ReloadDelay)
         {
@@ -43,7 +43,10 @@ public class Shotgun : Weapon
             if (magazinesize == 0) Reload();
 
             lastFire = Time.time;
+
+            return 3;
         }
+        return 0;
     }
 
     public override void Reload()
