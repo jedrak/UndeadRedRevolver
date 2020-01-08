@@ -46,10 +46,10 @@ public class playerMovement : MonoBehaviour
 
          playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.velocity = playerInput.normalized * moveSpeed;
-        MoveDown();
+        //MoveDown();
         MoveLeft();
         MoveRight();
-        MoveUp();
+        //MoveUp();
 
     }
     void MoveUp()
@@ -83,10 +83,10 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetTrigger("Left_move");
         }
-        if (Input.GetKeyUp(KeyCode.A) && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.D))
-        {
-            anim.SetTrigger("Left_Idle");
-        }
+        //if (Input.GetKeyUp(KeyCode.A) && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.D))
+        //{
+        //    anim.SetTrigger("Left_Idle");
+        //}
     }
     void MoveRight()
     {
@@ -95,10 +95,10 @@ public class playerMovement : MonoBehaviour
         {
             anim.SetTrigger("Right_move");
         }
-        if (Input.GetKeyUp(KeyCode.D) && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.W))
-        {
-            anim.SetTrigger("Right_Idle");
-        }
+        //if (Input.GetKeyUp(KeyCode.D) && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.W))
+        //{
+        //    anim.SetTrigger("Right_Idle");
+        //}
     }
 
 }
