@@ -67,7 +67,7 @@ public class Chest : MonoBehaviour
                 io.weapon = RandWeapon();
             }
 
-            anim.SetBool("open", true);
+            //anim.SetBool("open", true);
             // set state
             isOpen = true;
         }
