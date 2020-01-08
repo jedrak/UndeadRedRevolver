@@ -5116,8 +5116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1483112496}
   - component: {fileID: 1483112499}
-  - component: {fileID: 1483112498}
   - component: {fileID: 1483112497}
+  - component: {fileID: 1483112498}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -5208,9 +5208,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1483112495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 980a9b8e6cf69484b91bee2cc48c4b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameUI: {fileID: 422945987}
+  PauseMenuUI: {fileID: 714245914}
 --- !u!222 &1483112499
 CanvasRenderer:
   m_ObjectHideFlags: 0
