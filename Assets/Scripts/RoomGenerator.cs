@@ -9,19 +9,26 @@ public class RoomGenerator : MonoBehaviour
     public Transform player;
     private TimerManager _timerManager;
 
-    public void instantiateRoom(int [] content)
+    public void instantiateRoom(int[] content)
     {
-        for(int i =0; i<15; i++)
-        { 
+        foreach (Transform obj in GetComponentInChildren<Transform>())
+        {
+            if (!(obj.gameObject.tag == "Chest" || obj.gameObject.tag == "Spawner"))
+            {
+                Destroy(obj.gameObject);
+            }
+        }
+        for (int i = 0; i < 15; i++)
+        {
 
             GameObject gameObject = Instantiate(listOfTiles[content[i]], new Vector3((i % 5) * 7.5f, (i / 5) * 7.5f), Quaternion.Euler(0, 0, 0));
             gameObject.transform.parent = transform;
 
         }
-        
+
         AstarPath.active.Scan();
         int numberOfEnemies = Random.Range(0, 5);
-        for(int j = 0; j < numberOfEnemies; j++)
+        for (int j = 0; j < numberOfEnemies; j++)
         {
             int whichEnemy = Random.Range(0, listOfMobs.Count);
             GameObject mob = Instantiate(listOfMobs[whichEnemy],
@@ -32,16 +39,16 @@ public class RoomGenerator : MonoBehaviour
             mob.GetComponent<EnemyHealth>().timerManager = _timerManager;
         }
     }
-    
+
     void Start()
     {
         _timerManager = GetComponentInParent<TimerManager>();
         //generateRoom();
     }
 
-    
+
     void Update()
     {
-        
+
     }
 }

@@ -31,17 +31,17 @@ public class ShotRotation : MonoBehaviour
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   // find the angle in degrees
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
 
-        if (rotZ < 90 || rotZ > 270)
+        if (rotZ < 90 && rotZ > -90)
         {
-            if (Input.GetKeyUp(KeyCode.D) ||Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W))
                 anim.SetTrigger("Right_move");
             else
-            anim.SetTrigger("Right_Idle");
+                anim.SetTrigger("Right_Idle");
             //Vector3 theScale = gun.localScale;
             //theScale.y = 1;
             //gun.localScale = theScale;
         }
-        else
+        else if (rotZ > 90 || rotZ < -90)
         {
             //Vector3 theScale = gun.localScale;
             //theScale.y = -1;
@@ -49,7 +49,7 @@ public class ShotRotation : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W))
                 anim.SetTrigger("Left_move");
             else
-            anim.SetTrigger("Left_Idle");
+                anim.SetTrigger("Left_Idle");
         }
 
 
