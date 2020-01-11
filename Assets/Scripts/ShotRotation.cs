@@ -33,10 +33,11 @@ public class ShotRotation : MonoBehaviour
 
         if (rotZ < 90 && rotZ > -90)
         {
-            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W))
-                anim.SetTrigger("Right_move");
-            else
+            if (!(Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W)))
                 anim.SetTrigger("Right_Idle");
+            else
+                        anim.SetTrigger("Right_move");
+           
             //Vector3 theScale = gun.localScale;
             //theScale.y = 1;
             //gun.localScale = theScale;
@@ -46,10 +47,10 @@ public class ShotRotation : MonoBehaviour
             //Vector3 theScale = gun.localScale;
             //theScale.y = -1;
             //gun.localScale = theScale;
-            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W))
-                anim.SetTrigger("Left_move");
+            if (!(Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W)))
+                 anim.SetTrigger("Left_Idle");
             else
-                anim.SetTrigger("Left_Idle");
+                anim.SetTrigger("Left_move");
         }
 
 
