@@ -42,6 +42,8 @@ public class TimerManager : MonoBehaviour
         }
         if (timer.timeToEnd < 0)
         {
+            FindObjectOfType<AudioManager>().Play("morde");
+            FindObjectOfType<AudioManager>().Play("salut");
             _playerIsDead = true;
             _playerStateChanged = true;
         }
@@ -82,7 +84,13 @@ public class TimerManager : MonoBehaviour
 
         if (_playerStateChanged)
         {
-            if (!_playerIsDead) respawnController.respawn();
+            if (!_playerIsDead)
+            {
+                respawnController.respawn();
+
+                FindObjectOfType<AudioManager>().Play("hell");
+            }
+           
             foreach (Transform t in room.GetComponentInChildren<Transform>())
             {
                 if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);

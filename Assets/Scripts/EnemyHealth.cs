@@ -55,21 +55,23 @@ public class EnemyHealth : MonoBehaviour
                     FindObjectOfType<AudioManager>().Play("mk");
 
                 }
-                if (timerManager.monsterKillcount == 40)
+               else if (timerManager.monsterKillcount == 40)
                 {
                     FindObjectOfType<AudioManager>().Play("un");
 
                 }
-                if (timerManager.monsterKillcount == 60)
+                else if (timerManager.monsterKillcount == 60)
                 {
                     FindObjectOfType<AudioManager>().Play("incre");
 
                 }
-                if (timerManager.monsterKillcount == 80)
+                else if (timerManager.monsterKillcount == 80)
                 {
                     FindObjectOfType<AudioManager>().Play("anime");
 
                 }
+                else if(timerManager.monsterKillcount%10==0)
+                    FindObjectOfType<AudioManager>().Play("hey");
                 Destroy(gameObject);
             }
 
