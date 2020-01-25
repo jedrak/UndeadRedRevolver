@@ -43,7 +43,7 @@ public class TimerManager : MonoBehaviour
         if (timer.timeToEnd < 0)
         {
             FindObjectOfType<AudioManager>().Play("morde");
-            FindObjectOfType<AudioManager>().Play("salut");
+           
             _playerIsDead = true;
             _playerStateChanged = true;
         }
