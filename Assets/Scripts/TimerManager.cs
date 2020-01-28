@@ -20,7 +20,6 @@ public class TimerManager : MonoBehaviour
 
     private void Start()
     {
-        Screen.fullScreen = true;
         _playerIsDead = true;
         mat.SetFloat("blendDuration", 1.0f);
         monsterKillcount = 0;
