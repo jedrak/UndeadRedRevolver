@@ -15,7 +15,7 @@ public class PostProcess : MonoBehaviour
     private void Update() {
         if(tm._playerIsDead){
             mat.SetInt("playerIsDead", 1);
-
+            mat.SetFloat("startTime", Time.time);
         }
         else
         {
