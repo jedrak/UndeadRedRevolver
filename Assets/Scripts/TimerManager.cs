@@ -16,11 +16,13 @@ public class TimerManager : MonoBehaviour
     public GameObject messageText;
     public GameObject gameplayInfoText;
     public RespawnController respawnController;
+    public Material mat;
 
     private void Start()
     {
-        Screen.fullScreen = false;
+        Screen.fullScreen = true;
         _playerIsDead = true;
+        mat.SetFloat("blendDuration", 1.0f);
         monsterKillcount = 0;
         score = 0;
         gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "Move with WSAD, shoot with Arrows Keys";
@@ -43,9 +45,10 @@ public class TimerManager : MonoBehaviour
         if (timer.timeToEnd < 0)
         {
             FindObjectOfType<AudioManager>().Play("morde");
-           
+
             _playerIsDead = true;
             _playerStateChanged = true;
+            mat.SetFloat("startTime", Time.time);
         }
         if (_playerIsDead)
         {
@@ -66,7 +69,7 @@ public class TimerManager : MonoBehaviour
 
             //timer.timeToEnd = 10 + 2 * monsterKillcount;
             monsterKillcount = 0;
-            
+
         }
 
         foreach (Transform t in room.GetComponentInChildren<Transform>())
@@ -90,7 +93,7 @@ public class TimerManager : MonoBehaviour
 
                 FindObjectOfType<AudioManager>().Play("hell");
             }
-           
+
             foreach (Transform t in room.GetComponentInChildren<Transform>())
             {
                 if (t.gameObject.tag == "Enemy") Destroy(t.gameObject);
@@ -100,6 +103,6 @@ public class TimerManager : MonoBehaviour
 
 
 
-       
+
     }
 }
