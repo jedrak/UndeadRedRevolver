@@ -42,11 +42,12 @@
             sampler2D _MainTex;
             uniform int playerIsDead;
             uniform float startTime;
+            //uniform float currentTime;
             float blendDuration = 10.0f;
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                
+                //currentTime = _Time.y;
                 // just invert the colors
                 if(playerIsDead == 1){
                     fixed grey = (col.r + col.b + col.g)/3.0f;

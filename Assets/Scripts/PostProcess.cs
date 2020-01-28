@@ -21,6 +21,7 @@ public class PostProcess : MonoBehaviour
         {
             mat.SetInt("playerIsDead", 0);
         }
+        Debug.Log(mat.GetFloat("startTime") + " " + Time.time);
        
     }
 }
