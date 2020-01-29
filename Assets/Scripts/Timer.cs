@@ -8,23 +8,24 @@ public class Timer : MonoBehaviour
     public TimerManager manager;
     public float timeToEnd;
     public GameObject bulletPrefab;
-    public List<Sprite> sprites;
-    
+    // public List<Sprite> sprites;
+
+    private RectTransform rectTransform;
     private List<GameObject> _listOfBullets;
     /*public float _currentTime{
         get;
         private set;
     }*/
-    
+
 
     void Start()
     {
-        float trans = 0;
+        rectTransform = GetComponent<RectTransform>();
+        // float trans = 0;
         _listOfBullets = new List<GameObject>();
-        for(int i = 0; i < timeToEnd/60.0f+1; i++)
+        for (int i = 0; i < timeToEnd / 60.0f + 1; i++)
         {
-           
-            GameObject bullet = Instantiate(bulletPrefab, new Vector3(transform.position.x + i*.9f, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 0));
+            GameObject bullet = Instantiate(bulletPrefab, new Vector3(rectTransform.position.x + i * .9f, rectTransform.position.y, rectTransform.position.z), Quaternion.Euler(0, 0, 0));
             bullet.transform.parent = transform;
             _listOfBullets.Add(bullet);
         }
@@ -33,37 +34,40 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!manager._playerIsDead) timeToEnd -= Time.fixedDeltaTime;
-        if(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
-            while(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
-
-                //_listOfBullets[_listOfBullets.Count-1].GetComponent<SpriteRenderer>().sprite = sprites[sprites.Count-1];
-               
-                GameObject bullet = Instantiate(bulletPrefab);
-                
-                //bullet.transform.parent = transform;
-                RectTransform rt = bullet.GetComponent<RectTransform>();
-                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, rt.rect.width);
-                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, rt.rect.height);
-                Debug.Log(bullet.GetComponent<RectTransform>().transform.localPosition);
-                _listOfBullets.Add(bullet);
-            }
-                
+        // DEBUG dodaj serduszko
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            timeToEnd += 60;
         }
-        if(((timeToEnd) / 60.0f) < _listOfBullets.Count)
+
+        if (!manager._playerIsDead) timeToEnd -= Time.fixedDeltaTime;
+        if (((timeToEnd) / 60.0f + 1) > _listOfBullets.Count)
+        {
+            int i = 0;
+            while (((timeToEnd) / 60.0f + 1) > _listOfBullets.Count)
+            {
+                GameObject bullet = Instantiate(bulletPrefab);
+                RectTransform rt = bullet.GetComponent<RectTransform>();
+                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, i * rt.rect.width, rt.rect.width);
+                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, i * rt.rect.height, rt.rect.height);
+                Debug.Log(bullet.GetComponent<RectTransform>().transform.localPosition);
+
+                // GameObject bullet = Instantiate(bulletPrefab, new Vector3(rectTransform.position.x + i * 1.0f, rectTransform.position.y, rectTransform.position.z), Quaternion.Euler(0, 0, 0));
+                _listOfBullets.Add(bullet);
+                i++;
+            }
+
+        }
+        if (((timeToEnd) / 60.0f) < _listOfBullets.Count)
         {
 
-            if(_listOfBullets.Count - 1 > 0){
+            if (_listOfBullets.Count - 1 > 0)
+            {
                 Destroy(_listOfBullets[_listOfBullets.Count - 1]);
                 _listOfBullets.Remove(_listOfBullets[_listOfBullets.Count - 1]);
             }
         }
-        //int nr_of_sp = ((int)timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 10;
-        //if (nr_of_sp < 0) nr_of_sp = 0;
-        //Debug.Log(nr_of_sp);
-        _listOfBullets[_listOfBullets.Count - 1].GetComponent<Image>().fillAmount = (timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 60 ;
 
-
-
+        _listOfBullets[_listOfBullets.Count - 1].GetComponent<Image>().fillAmount = (timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 60;
     }
 }
