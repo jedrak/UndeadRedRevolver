@@ -51,20 +51,14 @@ public class TimerManager : MonoBehaviour
         }
         if (_playerIsDead)
         {
-            foreach (SpriteRenderer sp in this.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sp.color = new Color(.7f, .5f, .5f, 1.0f);
-            }
+
             timer.timeToEnd = monsterKillcount * 2;
             score = 0;
 
         }
         else
         {
-            foreach (SpriteRenderer sp in this.GetComponentsInChildren<SpriteRenderer>())
-            {
-                sp.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            }
+
 
             //timer.timeToEnd = 10 + 2 * monsterKillcount;
             monsterKillcount = 0;

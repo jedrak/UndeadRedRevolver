@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -36,14 +37,15 @@ public class Timer : MonoBehaviour
         if(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
             while(((timeToEnd) / 60.0f+1) > _listOfBullets.Count){
 
-                _listOfBullets[_listOfBullets.Count-1].GetComponent<SpriteRenderer>().sprite = sprites[sprites.Count-1];
+                //_listOfBullets[_listOfBullets.Count-1].GetComponent<SpriteRenderer>().sprite = sprites[sprites.Count-1];
                
-                GameObject bullet = Instantiate(bulletPrefab,
-                new Vector3(_listOfBullets[_listOfBullets.Count-1].transform.position.x + .8f,
-                    _listOfBullets[_listOfBullets.Count-1].transform.position.y,
-                    _listOfBullets[_listOfBullets.Count-1].transform.position.z),
-                    Quaternion.Euler(0, 0, 0));
-                bullet.transform.parent = transform;
+                GameObject bullet = Instantiate(bulletPrefab);
+                
+                //bullet.transform.parent = transform;
+                RectTransform rt = bullet.GetComponent<RectTransform>();
+                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, rt.rect.width);
+                rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, rt.rect.height);
+                Debug.Log(bullet.GetComponent<RectTransform>().transform.localPosition);
                 _listOfBullets.Add(bullet);
             }
                 
@@ -56,10 +58,10 @@ public class Timer : MonoBehaviour
                 _listOfBullets.Remove(_listOfBullets[_listOfBullets.Count - 1]);
             }
         }
-        int nr_of_sp = ((int)timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 10;
-        if (nr_of_sp < 0) nr_of_sp = 0;
+        //int nr_of_sp = ((int)timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 10;
+        //if (nr_of_sp < 0) nr_of_sp = 0;
         //Debug.Log(nr_of_sp);
-        _listOfBullets[_listOfBullets.Count - 1].GetComponent<SpriteRenderer>().sprite =  sprites[nr_of_sp];
+        _listOfBullets[_listOfBullets.Count - 1].GetComponent<Image>().fillAmount = (timeToEnd - ((_listOfBullets.Count - 1) * 60)) / 60 ;
 
 
 
