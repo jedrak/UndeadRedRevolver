@@ -21,7 +21,7 @@ public class TimerManager : MonoBehaviour
     private void Start()
     {
         _playerIsDead = true;
-        mat.SetFloat("blendDuration", 1.0f);
+        mat.SetFloat("blendDuration", 2.0f);
         monsterKillcount = 0;
         score = 0;
         gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "Move with WSAD, shoot with Arrows Keys";
