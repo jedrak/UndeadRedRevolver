@@ -13,7 +13,7 @@ public enum AmmoType
 
 public class ShootingController : MonoBehaviour
 {
-    private Weapon weapon = new Revolver();
+    private Weapon weapon;
     public Transform firePoint;
     public GameObject bulletDefaultPrefab;
     public GameObject bulletBouncyPrefab;
@@ -33,6 +33,7 @@ public class ShootingController : MonoBehaviour
     {
         shotRotation = GetComponentInChildren<ShotRotation>();
         camShake = GetComponent<CameraShake>();
+        weapon = weaponManager.weapons[0];
         bulletType = AmmoType.DEFAULT;
         setAmmo();
         ammo[(int)AmmoType.BOUNCY] = 10;
