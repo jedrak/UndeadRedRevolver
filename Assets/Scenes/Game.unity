@@ -4688,6 +4688,7 @@ MonoBehaviour:
   - {fileID: 1090117343}
   columns: 5
   rows: 5
+  _generator: {fileID: 0}
   nrOfEmptyRooms: 7
   chestPrefab: {fileID: 2903395036204697183, guid: 29c9e07631621fc46b0611d3f86fa24f,
     type: 3}
