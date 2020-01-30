@@ -20,7 +20,6 @@ public class PlayerInventory : MonoBehaviour
         // shield.SetActive(true);
         for (int i = 2; i < ITEM_SLOTS; i++)
         {
-            isItem[i] = true;
             itemSlots[i].SetActive(false);
         }
     }
@@ -48,6 +47,12 @@ public class PlayerInventory : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public bool UseSlot(int slotIndex)
+    {
+        if (isItem[slotIndex]) return itemSlots[slotIndex].GetComponentInChildren<ItemButton>().item.use();
+        else return false;
     }
 
 }

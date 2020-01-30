@@ -26,12 +26,14 @@ public class ShootingController : MonoBehaviour
     [SerializeField]
     public WeaponManager weaponManager;
     private ShotRotation shotRotation;
+    private PlayerInventory inventory;
 
     CameraShake camShake;
 
     void Start()
     {
         shotRotation = GetComponentInChildren<ShotRotation>();
+        inventory = GetComponent<PlayerInventory>();
         camShake = GetComponent<CameraShake>();
         weapon = weaponManager.weapons[0];
         bulletType = AmmoType.DEFAULT;
@@ -46,7 +48,15 @@ public class ShootingController : MonoBehaviour
         // DEBUG
         if (Input.GetKeyDown(KeyCode.I))
         {
-            gameObject.GetComponent<PlayerInventory>().activeNewItemSlot();
+            inventory.activeNewItemSlot();
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+            {
+                inventory.UseSlot(i);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.R))
