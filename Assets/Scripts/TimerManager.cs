@@ -79,7 +79,7 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    IEnumerator SetGameplayInfoTextForTime(string text, float seconds)
+    public IEnumerator SetGameplayInfoTextForTime(string text, float seconds)
     {
         gameplayInfoText.GetComponent<TextMeshProUGUI>().text = text;
         yield return new WaitForSeconds(seconds);
@@ -101,6 +101,17 @@ public class TimerManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         messageText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    public void LoadMenuWithDelay(int seconds)
+    {
+        StartCoroutine(wait(seconds));
+    }
+
+    private IEnumerator wait(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        MonoBehaviour.FindObjectOfType<PauseMenu>().LoadMenu();
     }
 
 }

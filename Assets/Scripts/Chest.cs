@@ -48,8 +48,16 @@ public class Chest : MonoBehaviour
     {
         if (!isOpen && other.gameObject.tag == "Player")
         {
+            map.chestsOpens++;
+
             int rand = UnityEngine.Random.Range(1, 100);
-            if (rand < 40)
+            if (map.chestsOpens >= map.nrOfchests)
+            {
+                ItemObject io = Instantiate(itemPrefab, itemPlace.position, itemPlace.rotation, transform);
+                io.item = new ItemHeart();
+                io.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            }
+            else if (rand < 40)
             {
                 ItemObject io = Instantiate(itemPrefab, itemPlace.position, itemPlace.rotation, transform);
                 io.item = RandItem(other.gameObject);

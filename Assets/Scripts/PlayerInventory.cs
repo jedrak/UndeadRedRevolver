@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour
     {
         shield = GameObject.FindGameObjectWithTag("Shield");
         shield.SetActive(false);
+        // DEBUG
+        // shield.SetActive(true);
         for (int i = 2; i < ITEM_SLOTS; i++)
         {
             isItem[i] = true;

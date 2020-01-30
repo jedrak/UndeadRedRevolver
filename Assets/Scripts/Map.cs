@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class _Room 
+public class _Room
 {
     public int[] contents = new int[15];
     public bool empty = false;
@@ -35,7 +35,7 @@ public class Map : MonoBehaviour
     public GameObject[] blocks;
     public int columns;
     public int rows;
-    private RoomGenerator _generator;
+    public RoomGenerator _generator;
     private _Room[,] map;
     public int nrOfEmptyRooms;
 
@@ -43,6 +43,8 @@ public class Map : MonoBehaviour
     public uint _playerY { get; set; }
     public bool _playerRoomChanged { get; set; }
     [SerializeField]
+    public int nrOfchests { get; set; }
+    public int chestsOpens { get; set; }
     public GameObject chestPrefab;
     [SerializeField]
     public GameObject Chests;
@@ -60,16 +62,16 @@ public class Map : MonoBehaviour
         _playerX = 0;
         _playerY = 0;
         _playerRoomChanged = true;
-        
-        for(int i = 0; i < rows; i++)
+
+        for (int i = 0; i < rows; i++)
         {
-            for(int j = 0; j < columns; j++)
+            for (int j = 0; j < columns; j++)
             {
                 map[i, j] = new _Room();
                 map[i, j].generate();
             }
         }
-        for(int i = 0; i < nrOfEmptyRooms; i++)
+        for (int i = 0; i < nrOfEmptyRooms; i++)
         {
             int roomX = Random.Range(1, columns);
             int roomY = Random.Range(1, rows);
@@ -83,8 +85,14 @@ public class Map : MonoBehaviour
 
     private void _chestHandle()
     {
-        int nrOfchests = (rows * columns - nrOfEmptyRooms) / 3;
-        for(int i = 0; i<nrOfchests; i++)
+        //DEBUG
+        /* nrOfchests = 1;
+        GameObject buff = Instantiate(chestPrefab, new Vector3(Random.Range(0, 30), Random.Range(0, 15), 0), Quaternion.identity);
+        buff.transform.parent = Chests.transform;
+        buff.GetComponent<Chest>().roomIndexX = 0;
+        buff.GetComponent<Chest>().roomIndexY = 0; */
+        nrOfchests = (rows * columns - nrOfEmptyRooms) / 3;
+        for (int i = 0; i < nrOfchests; i++)
         {
             GameObject buff = Instantiate(chestPrefab, new Vector3(Random.Range(0, 30), Random.Range(0, 15), 0), Quaternion.identity);
             buff.transform.parent = Chests.transform;
@@ -116,7 +124,7 @@ public class Map : MonoBehaviour
     private void _doorHandle()
     {
         //N
-        if (_playerY == columns - 1 || map[_playerX, _playerY+1].empty)
+        if (_playerY == columns - 1 || map[_playerX, _playerY + 1].empty)
         {
             doors[0].SetActive(false);
             blocks[0].SetActive(true);

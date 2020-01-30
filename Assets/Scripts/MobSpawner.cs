@@ -17,23 +17,26 @@ public class MobSpawner : MonoBehaviour
     private void FixedUpdate()
     {
         _currentMinute += Time.fixedDeltaTime;
-        if(_currentMinute > (60.0f / spawningSpeed))
+        if (_currentMinute > (60.0f / spawningSpeed))
         {
-            GameObject mob;
-            if (mobCounter % 20 == 0)
+            if (Vector3.Distance(player.transform.position, transform.position) < 50.0f)
             {
-                mob = Instantiate(bossPrefab, transform.position, transform.rotation);
+                GameObject mob;
+                if (mobCounter % 20 == 0)
+                {
+                    mob = Instantiate(bossPrefab, transform.position, transform.rotation);
+                }
+                else
+                {
+                    mob = Instantiate(mobPrefab, transform.position, transform.rotation);
+
+                }
+                mob.transform.parent = room.transform;
+                mob.GetComponent<AIDestinationSetter>().target = player.transform;
+                mob.GetComponent<EnemyHealth>().timerManager = timerManager;
+                _currentMinute = 0;
+                mobCounter++;
             }
-            else
-            {
-                mob = Instantiate(mobPrefab, transform.position, transform.rotation);
-               
-            }
-            mob.transform.parent = room.transform;
-            mob.GetComponent<AIDestinationSetter>().target = player.transform;
-            mob.GetComponent<EnemyHealth>().timerManager = timerManager;
-            _currentMinute = 0;
-            mobCounter++;
         }
     }
 }

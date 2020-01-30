@@ -36,7 +36,10 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (Shield.activeSelf)
+        {
+        }
+        else if (collision.gameObject.tag == "EnemyBullet")
         {
             if (manager._playerIsDead)
             {

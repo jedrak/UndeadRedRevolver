@@ -23,16 +23,23 @@ public class ItemObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerInventory inv = other.gameObject.GetComponent<PlayerInventory>();
-            for (int i = 0; i < inv.itemSlots.Length; i++)
+            if (item.name.Equals("Heart"))
             {
-                if (inv.isItem[i] == false)
+                if (item.use()) Destroy(gameObject);
+            }
+            else
+            {
+                PlayerInventory inv = other.gameObject.GetComponent<PlayerInventory>();
+                for (int i = 0; i < inv.itemSlots.Length; i++)
                 {
-                    inv.isItem[i] = true;
-                    GameObject go = Instantiate(itemButton, inv.itemSlots[i].transform, false);
-                    go.GetComponent<ItemButton>().item = item;
-                    Destroy(gameObject);
-                    break;
+                    if (inv.isItem[i] == false)
+                    {
+                        inv.isItem[i] = true;
+                        GameObject go = Instantiate(itemButton, inv.itemSlots[i].transform, false);
+                        go.GetComponent<ItemButton>().item = item;
+                        Destroy(gameObject);
+                        break;
+                    }
                 }
             }
         }
