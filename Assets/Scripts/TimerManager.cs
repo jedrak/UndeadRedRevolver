@@ -21,26 +21,13 @@ public class TimerManager : MonoBehaviour
         _playerIsDead = true;
         mat.SetFloat("blendDuration", 2.0f);
         monsterKillcount = 0;
-        gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "Move with WSAD, shoot with Arrows Keys";
+        StartCoroutine(SetGameplayInfoTextForTime("Move with WSAD, shoot with Arrows Keys", 10));
+        StartCoroutine(SetMessageTextForTime(120)); // To delete if tutorial exist
     }
 
     void FixedUpdate()
     {
-        if (Time.time > 10) gameplayInfoText.GetComponent<TextMeshProUGUI>().text = ""; // 10 sekund
-
         killCountText.SetActive(_playerIsDead);
-
-        if (Time.time > 120) // 2 min
-        {
-            if (_playerIsDead)
-            {
-                messageText.GetComponent<TextMeshProUGUI>().text = "You are dead.\nKill enemies to get more alive time!";
-            }
-            else
-            {
-                messageText.GetComponent<TextMeshProUGUI>().text = "You are alive.\nCollect items in chests and explore rooms!";
-            }
-        }
 
         if (timer.timeToEnd < 0)
         {
@@ -54,10 +41,6 @@ public class TimerManager : MonoBehaviour
         if (_playerIsDead)
         {
             timer.timeToEnd = monsterKillcount * 2;
-        }
-        else
-        {
-            monsterKillcount = 0;
         }
 
         foreach (Transform t in room.GetComponentInChildren<Transform>())
@@ -74,8 +57,15 @@ public class TimerManager : MonoBehaviour
 
         if (_playerStateChanged)
         {
-            if (!_playerIsDead)
             {
+                StartCoroutine(SetGameplayInfoTextForTime(
+                    "You have made " + monsterKillcount + " damege to monsters!\n" +
+                    "It gives you " + Mathf.RoundToInt(timer.timeToEnd) + " seconds of alive time!",
+                    6)
+                );
+
+                monsterKillcount = 0;
+
                 respawnController.respawn();
 
                 FindObjectOfType<AudioManager>().Play("hell");
@@ -88,4 +78,29 @@ public class TimerManager : MonoBehaviour
             _playerStateChanged = false;
         }
     }
+
+    IEnumerator SetGameplayInfoTextForTime(string text, float seconds)
+    {
+        gameplayInfoText.GetComponent<TextMeshProUGUI>().text = text;
+        yield return new WaitForSeconds(seconds);
+        gameplayInfoText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    IEnumerator SetMessageTextForTime(float seconds)
+    {
+        while (Time.time < seconds) // 2 min
+        {
+            if (_playerIsDead)
+            {
+                messageText.GetComponent<TextMeshProUGUI>().text = "You are dead.\nKill enemies to get more alive time!";
+            }
+            else
+            {
+                messageText.GetComponent<TextMeshProUGUI>().text = "You are alive.\nCollect items in chests and explore rooms!";
+            }
+            yield return new WaitForSeconds(1);
+        }
+        messageText.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
 }
