@@ -15,7 +15,7 @@ public class ItemButton : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
 
     public void Use()

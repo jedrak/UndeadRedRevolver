@@ -57,19 +57,19 @@ public class Chest : MonoBehaviour
                 io.item = new ItemHeart();
                 io.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             }
-            else if (rand < 40)
+            else if (rand < 40) // [0, 40]
             {
                 ItemObject io = Instantiate(itemPrefab, itemPlace.position, itemPlace.rotation, transform);
                 io.item = RandItem(other.gameObject);
             }
-            else if (rand < 81)
+            else if (rand < 81) // [41, 80]
             {
                 AmmoObject io = Instantiate(ammoPrefab, itemPlace.position, itemPlace.rotation, transform);
                 if (rand < 70) io.ammoType = AmmoType.BOUNCY;
                 else io.ammoType = AmmoType.PENETRATING;
                 io.bulletCount = rand;
             }
-            else
+            else // [81, 100]
             {
                 WeaponObject io = Instantiate(weaponPrefab, itemPlace.position, itemPlace.rotation, transform);
                 io.weapon = RandWeapon();
@@ -89,11 +89,10 @@ public class Chest : MonoBehaviour
 
         if (rand < 10) item = new ItemShield(player);
         else if (rand < 20) item = new ItemTime(player);
-        // TODO more items
+        else if (rand > 40) item = new ItemNewSlot(player);
         else item = new ItemShield(player);
-        return item;
 
-        /*return new ItemTime(player.GetComponentInParent<TimerManager>().timer);*/
+        return item;
     }
 
     private Weapon RandWeapon()

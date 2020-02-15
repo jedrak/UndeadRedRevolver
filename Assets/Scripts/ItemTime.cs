@@ -14,13 +14,9 @@ public class ItemTime : Item
 
     public override bool use()
     {
-        // TODO particles effect or sth??
-
         if (GameObject.FindObjectOfType<TimerManager>()._playerIsDead == false)
         {
-            //Debug.Log("Time befor: " + timer.timeToEnd);
             timer.timeToEnd += time;
-            //Debug.Log("Time after: " + timer.timeToEnd);
             return true;
         }
         else

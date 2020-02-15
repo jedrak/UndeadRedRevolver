@@ -24,7 +24,6 @@ public class Slot : MonoBehaviour
 
     public void DropItem()
     {
-        //GameObject.FindGameObjectWithTag("Player").GetComponent<ShootingController>().setUiClicked(true);
         // spawn on map
         if (inv.isItem[slotIndex])
         {

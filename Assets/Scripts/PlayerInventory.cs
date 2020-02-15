@@ -51,8 +51,20 @@ public class PlayerInventory : MonoBehaviour
 
     public bool UseSlot(int slotIndex)
     {
-        if (isItem[slotIndex]) return itemSlots[slotIndex].GetComponentInChildren<ItemButton>().item.use();
+        slotIndex--;
+        Debug.Log("slotIndex: " + slotIndex + ";");
+        Debug.Log("is item: " + isItem[slotIndex] + ";");
+        if (isItem[slotIndex])
+        {
+            itemSlots[slotIndex].GetComponentInChildren<ItemButton>().Use();
+            return true;
+        }
         else return false;
+    }
+
+    public int getMaxSlots()
+    {
+        return ITEM_SLOTS;
     }
 
 }

@@ -45,13 +45,7 @@ public class ShootingController : MonoBehaviour
 
     void Update()
     {
-        // DEBUG
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            inventory.activeNewItemSlot();
-        }
-
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < inventory.getMaxSlots(); i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0 + i))
             {
@@ -59,6 +53,7 @@ public class ShootingController : MonoBehaviour
             }
         }
 
+        // WEAPON RELOAD
         if (Input.GetKeyDown(KeyCode.R))
         {
             weapon.Reload();
