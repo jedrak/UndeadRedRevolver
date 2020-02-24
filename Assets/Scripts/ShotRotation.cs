@@ -37,16 +37,18 @@ public class ShotRotation : MonoBehaviour
                 anim.SetTrigger("Right_Idle");
             else
                         anim.SetTrigger("Right_move");
-           
+
             //Vector3 theScale = gun.localScale;
             //theScale.y = 1;
             //gun.localScale = theScale;
+            rend.flipX = false;
         }
         else if (rotZ > 90 || rotZ < -90)
         {
             //Vector3 theScale = gun.localScale;
             //theScale.y = -1;
             //gun.localScale = theScale;
+            rend.flipX = true;
             if (!(Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W)))
                  anim.SetTrigger("Left_Idle");
             else
